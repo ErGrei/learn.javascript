@@ -73,3 +73,4 @@ console.log(typeof obj); //object
 let foo = function(){};
 console.log(typeof foo); //function
 console.log(typeof NaN); //number
+1 / 0
