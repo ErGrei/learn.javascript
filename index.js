@@ -134,8 +134,8 @@ const ww = Boolean(qq);
 console.log(ww); //true
 
 const rr = "0";
-const tt = Boolean(ee);
-console.log(tt); //false
+const tt = Boolean(rr);
+console.log(tt); //true
 
 const yy = 0;
 const uu = Boolean(yy);
@@ -174,3 +174,28 @@ console.log(typeof -"2"); //number
 // ++var префиксная форма
 //++ декремент
 //-- инкремент
+
+
+let sum = "1"+ 1;
+console.log(sum);// 11 !Я не дурак, у меня просто папа програмист
+
+//Условные прераторы ветвления
+// if
+// if else
+// if else if
+//? : (тернарный оператор)
+
+//Логические операторы
+// && -- и
+// || -- или
+// ! -- отрицание
+
+
+console.log(0 || 1 || 2);//1
+console.log(0 && 1 && 2);//0
+console.log(0 || 1 && 2);//2
+console.log(1 || 1 && 0);//1
+console.log(Boolean(-1 || 0));// -1 --- true
+
+
+
