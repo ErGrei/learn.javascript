@@ -193,4 +193,10 @@ if (login == "Админ") {
   alert("Я вас не знаю");
 }
 
-
+function multiple(x) {
+  let res  = x % 3 === 0 && x % 5 === 0 ? 
+      "BangBoom" : x % 3  === 0 ?
+      "Bang" : x % 5  === 0 ?
+      "Boom" : "Miss";
+  return res
+}
