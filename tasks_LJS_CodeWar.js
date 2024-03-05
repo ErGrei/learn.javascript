@@ -60,3 +60,36 @@ function reverse(str) {
   return res;
 }
 reverse("hello world");
+
+//Палиндром
+function palindrome(str) {
+  const checkedStr = str.toLowerCase().replace(/[!,' '?.]/g, '');
+  let res = true;
+  //Вариант 1
+  // let intermediateLine = checkedStr.split("").reverse().join("");
+  // if (intermediateLine === checkedStr) {
+  //   res = true;
+  // } else {
+  //   res = false;
+  // }
+
+
+  //Вариант 2
+  let intermediateLine = checkedStr.split("")
+  for (let i = 0; i < checkedStr.length; i++) {
+    if (intermediateLine[i] !== intermediateLine[checkedStr.length - 1 - i]) {
+      res = false;
+    }
+  }
+
+  //Вариант 3
+  // let intermediateLine = checkedStr.split("").reverse()
+  // for (let i = 0; i < checkedStr.length; i++) {
+  //   if (intermediateLine[i] !== checkedStr[i]) {
+  //     res = false;
+  //   }
+  // }
+  console.log(res);
+  return res;
+}
+palindrome("ll!asdf dS?.al l !");
