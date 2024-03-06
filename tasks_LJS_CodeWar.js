@@ -63,7 +63,7 @@ reverse("hello world");
 
 //Палиндром
 function palindrome(str) {
-  const checkedStr = str.toLowerCase().replace(/[!,' '?.]/g, '');
+  const checkedStr = str.toLowerCase().replace(/[!,' '?.]/g, "");
   let res = true;
   //Вариант 1
   // let intermediateLine = checkedStr.split("").reverse().join("");
@@ -73,9 +73,8 @@ function palindrome(str) {
   //   res = false;
   // }
 
-
   //Вариант 2
-  let intermediateLine = checkedStr.split("")
+  let intermediateLine = checkedStr.split("");
   for (let i = 0; i < checkedStr.length; i++) {
     if (intermediateLine[i] !== intermediateLine[checkedStr.length - 1 - i]) {
       res = false;
@@ -95,6 +94,7 @@ function palindrome(str) {
 palindrome("ll!asdf dS?.al l !");
 
 /////////////////////////////////////////////////////////////////////////////////////
+//Задачи learn.javascript
 
 //Какое последнее значение выведет этот код? Почему?
 //ответ 3,2,1 потом i=0 проверка не пройдет
@@ -129,7 +129,7 @@ for (let i = 0; i < 5; i++) console.log(i);
 // Префиксная форма:
 
 for (let i = 0; i < 5; ++i) console.log(i);
-//Оба цыкла выведут 0,1,2,3,4 потом цыкл завершится поскольку объявляется переменная, потом проходит проверка, 
+//Оба цыкла выведут 0,1,2,3,4 потом цыкл завершится поскольку объявляется переменная, потом проходит проверка,
 //потом выполняется тело цыкла, потом происходит увеличение переменной i, потом проверяется условие цыкла.
 
 // При помощи цикла for выведите чётные числа от 2 до 10.
@@ -143,11 +143,152 @@ for (let i = 2; i <= 10; i++) {
 //Перепишите код, заменив цикл for на while, без изменения поведения цикла.
 
 for (let i = 0; i < 3; i++) {
-  console.log( `number ${i}!` );
+  console.log(`number ${i}!`);
 }
 
 let cur = 0;
 while (cur < 3) {
-  console.log ( `number ${cur}!` );
+  console.log(`number ${cur}!`);
   cur++;
 }
+
+//Напишите код, который выводит все простые числа из интервала от 2 до n.
+
+let num = [];
+
+for (let i = 2; i <= 10; i++) {
+  let isPrime = true;
+  for (let j = 2; j < i; j++) {
+    if (i % j === 0) {
+      isPrime = false;
+    }
+  }
+  if (isPrime) {
+    num.push(i);
+    console.log(num);
+  }
+}
+//Напишите if..else, соответствующий следующему switch:
+// switch (browser) {
+//   case 'Edge':
+//     alert( "You've got the Edge!" );
+//     break;
+
+//   case 'Chrome':
+//   case 'Firefox':
+//   case 'Safari':
+//   case 'Opera':
+//     alert( 'Okay we support these browsers too' );
+//     break;
+
+//   default:
+//     alert( 'We hope that this page looks ok!' );
+// }
+let browser = "Safari";
+if (browser === "Edge") {
+  console.log("You've got the Edge!");
+} else if (
+  browser === "Chrome" ||
+  browser === "Firefox" ||
+  browser === "Safari" ||
+  browser === "Opera"
+) {
+  console.log("Okay we support these browsers too");
+} else {
+  console.log("We hope that this page looks ok!");
+}
+
+// Перепишите код с использованием одной конструкции switch:
+
+// const number = +prompt('Введите число между 0 и 3', '');
+
+// if (number === 0) {
+//   alert('Вы ввели число 0');
+// }
+
+// if (number === 1) {
+//   alert('Вы ввели число 1');
+// }
+
+// if (number === 2 || number === 3) {
+//   alert('Вы ввели число 2, а может и 3');
+// }
+const number = 3;
+
+switch (number) {
+  case 0:
+    console.log("Вы ввели число 0");
+    break;
+
+  case 1:
+    console.log("Вы ввели число 1");
+    break;
+
+  case 2:
+  case 3:
+    console.log("Вы ввели число 2, а может и 3");
+    break;
+}
+
+//Обязателен ли "else"? нет, если условее верное выполнение функции остановится
+function checkAge(age) {
+  if (age > 18) {
+    return true;
+  } else {
+    // ...
+    return confirm('Родители разрешили?');
+  }
+}
+
+// //Перепишите функцию, используя оператор '?' или '||'
+// function checkAge(age) {
+//   if (age > 18) {
+//     return true;
+//   } else {
+//     return confirm('Родители разрешили?');
+//   }
+// }
+function checkAge(age) {
+  return age > 18 ? true : confirm("Родители разрешили?");// обязательно 2условия иначе ошибка
+}
+
+function checkAge(age) {
+  return (age > 18) || confirm('Родители разрешили?');// проверка вернет true поэтому допускается 1 условие
+}
+
+// Напишите функцию min(a,b), которая возвращает меньшее из чисел a и b.
+// // Пример вызовов:
+// min(2, 5) == 2
+// min(3, -1) == -1
+// min(1, 1) == 1
+
+function min(a, b) {
+  if (a < b) {
+    return a;
+  } else {
+    return b;
+  }
+}
+console.log(min(2, 5));
+console.log(min(3, -1));
+console.log(min(1, 1));
+
+// Замените код Function Expression стрелочной функцией:
+
+// function ask(question, yes, no) {
+//   if (confirm(question)) yes()
+//   else no();
+// }
+
+// ask(
+//   "Вы согласны?",
+//   function() { alert("Вы согласились."); },
+//   function() { alert("Вы отменили выполнение."); }
+// );
+
+// // или так
+// ask(
+//   "Вы согласны?",
+//   () => alert("Вы согласились."),
+//   () => alert("Вы отменили выполнение."),
+// );
