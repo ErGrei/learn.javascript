@@ -129,38 +129,3 @@ switch (a) {
     console.log('default');
 }
 
-//Функции
-//объявление функции
-function foo() {
-  console.log('foo');
-}
-foo();
-
-//параметры функции
-function bar(a, b) {
-  console.log(a + b);
-}
-bar(1, 2);
-
-//параметры по умолчанию
-function baz(a = 1, b = 2) {
-  console.log(a + b);
-}
-baz(1, 2);
-baz(1);
-baz();
-baz(1, 2, 3);
-
-//return
-function qux(a, b) {
-  return a + b;
-}
-let result = qux(1, 2);
-console.log(result);
-
-//function expression
-let quxx = function (a, b) {
-  return a + b;
-};
-let resultx = quxx(1, 2);
-console.log(resultx);
