@@ -15,9 +15,9 @@ function getNumbersByParity(data, par) {
 
   //   вариант 2
   if (par === "even") {
-    isEven(data);
+    return isEven(data);
   } else {
-    isOdd(data);
+    return isOdd(data);
   }
   function isEven(arr) {
     let arrEven = [];
@@ -26,6 +26,7 @@ function getNumbersByParity(data, par) {
         arrEven.push(arr[i]);
       }
     }
+    return arrEven;
   }
   function isOdd(arr) {
     let arrOdd = [];
@@ -34,6 +35,7 @@ function getNumbersByParity(data, par) {
         arrOdd.push(arr[i]);
       }
     }
+    return arrOdd;
   }
 }
 
