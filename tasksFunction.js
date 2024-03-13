@@ -1,3 +1,19 @@
+//вернуть сроку в алфавитном порядке
+function appendStr(str) {
+  const arr = str.split("");
+  // const resArr = [];
+  // let intermediateVariable = '';
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i] < arr[j]) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+    }
+  }
+  console.log(arr.join(""));
+  return arr.join("");
+}
+appendStr("абоабарпопрол");
 //Обязателен ли "else"? нет, если условее верное выполнение функции остановится
 function checkAge(age) {
   if (age > 18) {
@@ -47,7 +63,6 @@ function pow(x, n) {
   return x ** n;
 }
 console.log(pow(2, 2));
-
 
 // Замените код Function Expression стрелочной функцией:
 
