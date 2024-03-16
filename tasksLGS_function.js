@@ -46,20 +46,19 @@ sum(1, 2);
 //2 способ можно применить методы массивов
 function sum2(...args) {
   return args.reduce((acc, i) => (acc += i), 0);
-
-  
 }
 sum2(1, 2, 1, 3, 4);
 //////////////////////////////////////////
 
 //самовызаваемая функция
-(function sum (){
-  console.log(1+2);
-})()
+(function sum() {
+  console.log(1 + 2);
+})();
 
 //sum() !!!sum is not defined
 
 ////////////////////////////////////////////
+
 // функция передается в функцию
 const sum = function (a, b) {
   return a + b;
@@ -81,6 +80,14 @@ console.log(counter());
 console.log(counter());
 console.log(counter());
 
+// переприсваивание значения функции название фунции как переменная
+function f() {
+  console.log(1 + 2);
+}
+f();
+f = 5;
+console.log(f);
+
 //callback функция, которая выполняется после выполнения другой функции.
 //любая функция, которая передаётся в другую функцию в качестве аргумента
 
@@ -99,7 +106,7 @@ function A(x) {
       function D(w) {
         function E(q) {
           function F(r) {
-            console.log(x + y + z + w + q + r);//вернет 1+2+3+2+1+5
+            console.log(x + y + z + w + q + r); //вернет 1+2+3+2+1+5
           }
           F(5);
         }
@@ -111,7 +118,7 @@ function A(x) {
   }
   B(2);
 }
-A('1');
+A("1");
 
 //функция не возвращающая ничего - процедура ВОПРОС парвильно ли понял?
 let a = null;
@@ -126,12 +133,11 @@ sumArr();
 console.log(a);
 
 // funktion expression и рекурсия
-const sum3 = function sum4 () {
+const sum3 = function sum4() {
   let a = 1 + 2;
+  console.log(sum3());
+  console.log(sum4());
+  return a;
+}; // RangeError: Maximum call stack size exceeded нет выхода из рекурсии
 console.log(sum3());
-console.log(sum4());
-return a;
-}// RangeError: Maximum call stack size exceeded нет выхода из рекурсии
-console.log(sum3());
-console.log(sum4());// ReferenceError: sum4 is not defined
-
+console.log(sum4()); // ReferenceError: sum4 is not defined
