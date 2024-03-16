@@ -15,8 +15,10 @@ function getNumbersByParity(data, par) {
 
   //   вариант 2
   if (par === "even") {
+    console.log(isEven(data));
     return isEven(data);
   } else {
+    console.log(isOdd(data));
     return isOdd(data);
   }
   function isEven(arr) {
@@ -39,13 +41,22 @@ function getNumbersByParity(data, par) {
   }
 }
 
+// getNumbersByParity([1,2,3,4,5,6,7,8,9,10], "odd")
+
 // Реализуйте функцию hasArrays, которая принимает массив данных разных типов и
 // возвращает true, если этот массив содержит массив внутри себя. Если нет, функция должна вернуть false.
 function hasArrays(arr) {
   if (arr.lehght === 0) {
+    console.log('false');
     return false;
   }
   for (let i = 0; i < arr.length; i++) {
-    Array.isArray(arr[i]) ? true : false;
+    if (Array.isArray(arr[i])){
+      console.log('true');
+      return true;
+    }     
   }
+  console.log('false');
+  return false;
 }
+hasArrays([1,2,3,4,5,6,[],8,9,10]);
