@@ -13,7 +13,7 @@ function appendStr(str) {
   console.log(arr.join(""));
   return arr.join("");
 }
-appendStr("абоабарпопрол");
+appendStr("ывапрваор");
 //Обязателен ли "else"? нет, если условее верное выполнение функции остановится
 function checkAge(age) {
   if (age > 18) {
