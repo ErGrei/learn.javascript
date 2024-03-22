@@ -88,8 +88,32 @@ function cloneObjFoo (obj) {
     return clone
 }
 
-let obj10 = cloneObjFoo(obj);
-obj10.e.c[2] = 15;
-console.log(obj10);
-console.log(obj10.foo()); 
-console.log(obj);
+// let obj10 = cloneObjFoo(obj);
+// obj10.e.c[2] = 15;
+// console.log(obj10);
+// console.log(obj10.foo()); 
+// console.log(obj);
+
+
+//THIS!
+
+console.log(this)
+
+const objTamTam = {
+  name: "TamTamTam",
+  getName: function () {
+
+    return this.name
+  },
+
+}
+console.log(objTamTam.getName())
+
+// потерять this
+
+const tadam = objTamTam.getName
+
+console.log(tadam())
+
+const ups = setTimeout(objTamTam.getName, 1000);
+console.log(ups)
