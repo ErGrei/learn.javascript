@@ -12,7 +12,7 @@ let obj = {
     return 1 + 2;
   },
 };
-console.log(obj);
+// console.log(obj);
 
 let obj2 = new Object();
 
@@ -24,7 +24,7 @@ obj3.d = 6;
 //если ничего не передат TypeError: Object prototype may only be an Object or null: undefined
 //создает объект на основе прототипа другово объекта
 let obj4 = Object.create(obj);
-console.log(obj4.e);
+// console.log(obj4.e);
 obj4.e.c[1] = 7;
 obj4.name = "John";
 
@@ -71,7 +71,7 @@ function cloneObj (obj) {
 let obj9 = cloneObj(obj);
 
 obj9.e.c[2] = 11;
-console.log(obj9);
+// console.log(obj9);
 // console.log(obj9.foo()); TypeError: obj9.foo is not a function, массив стал объектом
 // console.log(obj);
 
@@ -89,7 +89,7 @@ function cloneObjFoo (obj) {
 }
 
 let obj10 = cloneObjFoo(obj);
-obj10.e.c[2] = 11;
+obj10.e.c[2] = 15;
 console.log(obj10);
-// console.log(obj10.foo()); 
-// console.log(obj);
+console.log(obj10.foo()); 
+console.log(obj);
