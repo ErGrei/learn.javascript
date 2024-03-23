@@ -78,7 +78,7 @@ obj9.e.c[2] = 11;
 function cloneObjFoo (obj) {
     const clone = {};
     for (let key in obj) {
-        if (typeof obj[key] === "Object") {
+        if (typeof obj[key] === "object") {
             clone[key] = cloneObjFoo(obj[key]);
             continue
         } else {
@@ -117,3 +117,39 @@ console.log(tadam())
 
 const ups = setTimeout(objTamTam.getName, 1000);
 console.log(ups)
+
+
+console.clear();
+const obja = {
+  aboba() {
+    const object = {
+      callback: () => console.log(this.aboba),
+      method() {
+        this.callback();
+      },
+      aboba: 125
+    };
+    object.method();
+  }
+};
+
+obja.aboba()
+
+
+const objq = {
+  aboba() {
+    const zopa = {
+      name: "John",
+      method(func) {
+        func();
+        const f = () => console.log(this.name);
+        f();
+      }
+    };
+    zopa.method(() => console.log(this.name));
+  }
+};
+
+
+objq.aboba()
+
