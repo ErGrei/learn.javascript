@@ -229,4 +229,14 @@ switch (number) {
     console.log("Вы ввели число 2, а может и 3");
     break;
 }
+// Write a function, isItLetter or is_it_letter, which tells us if a given character is an, uppercase or lowercase, letter.
+function isItLetter(character) {
+if (character >= 'a' && character <= 'z' || character >= 'A' && character <= 'Z'){
+  return true;}
+  return false;
 
+}
+
+let character = "1";
+
+console.log(typeof +character !== "number");
