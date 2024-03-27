@@ -1,12 +1,21 @@
-// символ Итератор
-
 const obj = {
   mame: "John",
   age: 23,
   city: "London",
   friends: ["Pete", "Sam"],
+  [Symbol.toPrimitive]: function (hitn) {
+    switch (hitn) {
+      case "string":
+        return this.mame;
+      case "number":
+        return this.age;
+      default:
+        return "error";
+    }
+  },
 };
 
+// символ Итератор
 /**
  * Converts an object into an iterator.
  *
@@ -40,6 +49,10 @@ function toIterator(obj) {
   };
 }
 
-for (let value of toIterator(obj)) {
-  console.log(value);
-}
+// for (let value of toIterator(obj)) {
+//   console.log(value);
+// }
+
+// преобразование объекта в примитиву
+
+console.log(+obj);
