@@ -8,7 +8,7 @@ const obj = {
       case "string":
         return this.mame;
       case "number":
-        return this.age;
+        return this.city;
       default:
         return "error";
     }
@@ -55,4 +55,33 @@ function toIterator(obj) {
 
 // преобразование объекта в примитиву
 
-console.log(+obj);
+// console.log(Number(obj));
+obj.toString = function () {
+  return `${this.mame} ${this.city}`;
+};
+// console.log(obj.toString());
+
+// функция конструктор
+
+function SuperConstruktor() {
+// неявно создаем this = {}
+
+  this.name = "John";
+  this.age = 23;
+  this.city = "London";
+  this.friends = ["Pete", "Sam"];
+
+  //неявно return this
+
+  // return 'hello';//игнорируется
+
+  return {
+    name: "HA-HA",
+  }
+}
+
+const obj2 = new SuperConstruktor();
+const obj3 = SuperConstruktor();
+
+console.log(obj2);
+console.log(obj3);
