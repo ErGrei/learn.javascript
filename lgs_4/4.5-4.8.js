@@ -3,16 +3,6 @@ const obj = {
   age: 23,
   city: "London",
   friends: ["Pete", "Sam"],
-  [Symbol.toPrimitive]: function (hitn) {
-    switch (hitn) {
-      case "string":
-        return this.mame;
-      case "number":
-        return this.city;
-      default:
-        return "error";
-    }
-  },
 };
 
 // символ Итератор
@@ -55,7 +45,18 @@ function toIterator(obj) {
 
 // преобразование объекта в примитиву
 
-// console.log(Number(obj));
+obj[Symbol.toPrimitive] = function (hitn) {
+  switch (hitn) {
+    case "string":
+      return this.mame;
+    case "number":
+      return this.city;
+    default:
+      return "error";
+  }
+};
+
+console.log(String(obj));
 obj.toString = function () {
   return `${this.mame} ${this.city}`;
 };
@@ -64,7 +65,7 @@ obj.toString = function () {
 // функция конструктор
 
 function SuperConstruktor() {
-// неявно создаем this = {}
+  // неявно создаем this = {}
 
   this.name = "John";
   this.age = 23;
@@ -77,7 +78,7 @@ function SuperConstruktor() {
 
   return {
     name: "HA-HA",
-  }
+  };
 }
 
 const obj2 = new SuperConstruktor();
