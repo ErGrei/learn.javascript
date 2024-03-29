@@ -56,11 +56,12 @@ obj[Symbol.toPrimitive] = function (hitn) {
   }
 };
 
-console.log(String(obj));
+// console.log(String(obj));
 obj.toString = function () {
   return `${this.mame} ${this.city}`;
 };
-// console.log(obj.toString());
+
+
 
 // функция конструктор
 
@@ -76,13 +77,28 @@ function SuperConstruktor() {
 
   // return 'hello';//игнорируется
 
-  return {
-    name: "HA-HA",
-  };
+  // return {
+  //   name: "HA-HA",
+  // };
 }
 
-const obj2 = new SuperConstruktor();
-const obj3 = SuperConstruktor();
+function returnObj() {
+  return {
+    name: "HA-HA",
+    age: 10,
+  }
+}
 
-console.log(obj2);
-console.log(obj3);
+const objFanc = returnObj();
+
+const obj2 = new SuperConstruktor();
+const obj3 = new SuperConstruktor();
+
+// console.log(obj2);
+// console.log(obj3);
+console.log(objFanc)
+
+SuperConstruktor.prototype.pogonyalo = "karasy";
+console.log(obj3.pogonyalo);
+console.log(obj2.pogonyalo);
+
