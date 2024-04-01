@@ -62,6 +62,12 @@ Calc.prototype.createButton = function (arr) {
   return this.wraperBtn;
 };
 
+/**
+ * Handles the click event for the calculator buttons, updating the calculator display and performing arithmetic operations.
+ *
+ * @param {} 
+ * @return {} 
+ */
 Calc.prototype.addEvent = function () {
   let a = "";
   let b = "";
@@ -77,21 +83,29 @@ Calc.prototype.addEvent = function () {
     element.addEventListener("click", click);
   });
 
+/**
+ * Handles the click event on a calculator button and performs the corresponding operation.
+ *
+ * @return {void} This function does not return a value.
+ */
   function click() {
     this.out = document.querySelector(".calc-screen");
     this.value = this.textContent;
     console.log(this.value);
     if (this.value === "ac") {
       a = "";
+      b = "";
+      operator = "";
       this.out.textContent = "0";
     }
     if (!isNaN(+this.value) || this.value === ".") {
       if (b === "" && operator === "") {
         a += this.value;
         this.out.textContent = a;
-      }
-      if (a !== "" && b !== "" && finish === false) {
-        this.out.textContent = this.value;
+      } else if (a !== "" && b !== "" && finish) {
+      } else {
+        b += this.value;
+        this.out.textContent = b;
       }
     }
     if (
@@ -101,8 +115,39 @@ Calc.prototype.addEvent = function () {
       this.value === "/"
     ) {
       operator = this.value;
-      this.out.textContent = this.operator;
+      this.out.textContent = this.value;
+    }
+    if (this.value === "=") {
+      switch (operator) {
+        case "+":
+          a = +(Math.round(+(a + +b) + "e+5") + "e-5");
+          break;
+        case "-":
+          a = +(Math.round(+a - +b + "e+5") + "e-5");
+          break;
+        case "*":
+          a = +(Math.round(+a * +b + "e+5") + "e-5");
+          break;
+        case "/":
+          if (+b === 0) {
+            this.out.textContent = "Делить на 0 нельзя!";
+            a = "";
+            b = "";
+            operator = "";
+          } else {
+            a = +(Math.round(+a / +b + "e+5") + "e-5");
+            break;
+          }
+        default:
+          break;
+      }
+      this.out.textContent = a;
+      b = "";
+      operator = "";
     }
   }
 };
+
+
 const calc = new Calc(btn);
+
