@@ -78,40 +78,40 @@ let towns = [
 }
 search()
 
-// let arr = (num) => {
-//   let arr = [];
-//   for (let i = 1; i <= num; i++) {
-//     arr.push(i);
-//   }
-//   return arr;
-// };
+let arr = (num) => {
+  let arr = [];
+  for (let i = 1; i <= num; i++) {
+    arr.push(i);
+  }
+  return arr;
+};
 
-// function search(arr, num) {
-//   for (let i = 0; i < arr.length; i++) {
-//     if (arr[i] === num) {
-//       return i;
-//     }
-//   }
-//   return -1;
-// }
+function search(arr, num) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === num) {
+      return i;
+    }
+  }
+  return -1;
+}
 
-// let step = 0;
-// function quickSearch(arr, num) {
-//   //[10,20,30,40]
-//   let left = 0;
-//   let right = arr.length - 1; //3
-//   while (left <= right) {
-//     step += 1;
-//     let middle = Math.floor((left + right) / 2); //1
-//     if (arr[middle] === num) {
-//       return middle;
-//     } else if (arr[middle] < num){
-//         left = middle + 1;
-//     } else {
-//         right = middle - 1;
-//     }
-//   }
-//   return -1;
-// }
+let step = 0;
+function quickSearch(arr, num) {
+  //[10,20,30,40]
+  let left = 0;
+  let right = arr.length - 1; //3
+  while (left <= right) {
+    step += 1;
+    let middle = Math.floor((left + right) / 2); //1
+    if (arr[middle] === num) {
+      return middle;
+    } else if (arr[middle] < num){
+        left = middle + 1;
+    } else {
+        right = middle - 1;
+    }
+  }
+  return -1;
+}
 
-// // console.log(quickSearch(arr(10000000), 10000000), step);
+console.log(quickSearch(arr(10000000), 10000000), step);

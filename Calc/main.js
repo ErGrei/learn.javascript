@@ -21,6 +21,12 @@ const btn = [
   "=",
 ];
 
+/**
+ * A function that creates a calculator interface.
+ *
+ * @param {array} arr - array of elements for the calculator buttons
+ * 
+ */
 function Calc(arr) {
   this.wraper = document.createElement("div");
   this.wraper.classList.add("wraper");
@@ -65,8 +71,8 @@ Calc.prototype.createButton = function (arr) {
 /**
  * Handles the click event for the calculator buttons, updating the calculator display and performing arithmetic operations.
  *
- * @param {} 
- * @return {} 
+ * @param {}
+ * @return {}
  */
 Calc.prototype.addEvent = function () {
   let a = "";
@@ -83,11 +89,11 @@ Calc.prototype.addEvent = function () {
     element.addEventListener("click", click);
   });
 
-/**
- * Handles the click event on a calculator button and performs the corresponding operation.
- *
- * @return {void} This function does not return a value.
- */
+  /**
+   * Handles the click event on a calculator button and performs the corresponding operation.
+   *
+   * @return {void} This function does not return a value.
+   */
   function click() {
     this.out = document.querySelector(".calc-screen");
     this.value = this.textContent;
@@ -97,14 +103,30 @@ Calc.prototype.addEvent = function () {
       b = "";
       operator = "";
       this.out.textContent = "0";
+      this.dotCount = 0;
     }
     if (!isNaN(+this.value) || this.value === ".") {
+      if (this.value === "." && this.dotCount > 0) {
+        return;
+      } else if (this.value === ".") {
+        this.dotCount++;
+      }
       if (b === "" && operator === "") {
         a += this.value;
         this.out.textContent = a;
       } else if (a !== "" && b !== "" && finish) {
       } else {
         b += this.value;
+        this.out.textContent = b;
+      }
+    }
+
+    if (this.value === "+/-") {
+      if (a !== "" && b === "" && operator === "") {
+        a = +a * -1;
+        this.out.textContent = a;
+      } else if (a !== "" && b !== "" && operator !== "") {
+        b = +b * -1;
         this.out.textContent = b;
       }
     }
@@ -119,6 +141,8 @@ Calc.prototype.addEvent = function () {
     }
     if (this.value === "=") {
       switch (operator) {
+        case "%":
+          a = +(Math.round((+a / 100) * +b + "e+5") + "e-5");
         case "+":
           a = +(Math.round(+(a + +b) + "e+5") + "e-5");
           break;
@@ -144,10 +168,9 @@ Calc.prototype.addEvent = function () {
       this.out.textContent = a;
       b = "";
       operator = "";
+      this.dotCount = 0;
     }
   }
 };
 
-
 const calc = new Calc(btn);
-
