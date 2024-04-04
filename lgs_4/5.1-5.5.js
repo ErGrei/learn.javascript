@@ -1,17 +1,50 @@
-// Методы массивов
-// НЕ МУТАБЕЛЬНЫЕ
 
+
+
+// Методы массивов
+//Мутабельные методы массивов
 let arrWorck = [1, 2, 3, 4, 5];
 
-// Метод slice() в JavaScript используется для создания нового массива путём извлечения части существующего массива. Он не изменяет исходный массив, а возвращает новый массив, содержащий копию части исходного массива.
+arrWorck.push(6, 7); // [1, 2, 3, 4, 5, 6, 7]
+arrWorck.pop(); // [1, 2, 3, 4, 5, 6]
+arrWorck.shift(); // [2, 3, 4, 5, 6]
+arrWorck.unshift(0); // [0, 2, 3, 4, 5, 6]
+arrWorck.splice(0, 1); // [1, 2, 3, 4, 5, 6]
+arrWorck.reverse(); // [6, 5, 4, 3, 2]
+// НЕ МУТАБЕЛЬНЫЕ
 
-const arrSlice = arrWorck.slice(1, 3); // [2, 3]
+arrWorck.forEach((index) => {
+    console.log(index);
+});
 
-// добавить новые элементы в массив без мутации изначального массива.
+let newArr = arrWorck.map((index) => {
+    return index * 2
+})
 
-const arrConcat = arrWorck.concat([6, 7]); // [1, 2, 3, 4, 5, 6, 7]
+newArr = arrWorck.filter((index) => {
+    return index % 2 === 0
+})
 
-const arrSpred = [...arrWorck, ...[6, 7]]; // [1, 2, 3, 4, 5, 6, 7]
+newArr = arrWorck.reduce((acc, index) => {
+    return acc + index
+}, 0)
+
+newArr = arrWorck.indexOf(2);
+
+newArr = arrWorck.lastIndexOf(2);
+
+newArr = arrWorck.join('-'); // '1-2-3-4-5-6'
+
+newArr = arrWorck.slice(1, 3);
+
+newArr = arrWorck.concat([6, 7]);
+
+newArr = arrWorck.find((index) => index === 2);
+
+newArr = arrWorck.findIndex((index) => index === 2);
+
+Array.isArray(arrWorck)
+
 
 //СТРОКИ
 // length(): Возвращает длину строки.
