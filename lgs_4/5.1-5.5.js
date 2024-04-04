@@ -1,5 +1,38 @@
+// Function receive a two-dimensional square array of random integers. On the main diagonal, all the negative integers must be changed to 0, while the others must be changed to 1 (Note: 0 is considered non-negative, here).
 
+function matrix(array) {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[i].length; j++) {
+      if (array[i][i] <= 0) {
+        array[i][i] = 0;
+      } else {
+        array[i][i] = 1;
+      }
+    }
+  }
+  return array;
+}
+console.log(
+  matrix([
+    [-1, 4, -5, -9, 3],
+    [6, -4, -7, 4, -5],
+    [3, 5, 4, -9, -1],
+    [1, 5, -7, -8, -9],
+    [-3, 2, 1, -5, 6],
+  ])
+);
+//
+// [[ +0, 4, -5, -9, 3 ],expected 
+//  [ 6, +0, -7, 4, -5 ],
+//  [ 3, 5, 1, -9, -1 ],
+//  [ 1, 5, -7, +0, -9 ],
+//  [ -3, 2, 1, -5, +0 ] ]
 
+//  [[ 1, 4, -5, -9, 3 ],to deeply equal 
+//   [ 6, 1, -7, 4, -5 ],
+//   [ 3, 5, 1, -9, -1 ],
+//   [ 1, 5, -7, +0, -9],
+//   [ -3, 2, 1, -5, 1 ] ]
 
 // Методы массивов
 //Мутабельные методы массивов
@@ -14,26 +47,26 @@ arrWorck.reverse(); // [6, 5, 4, 3, 2]
 // НЕ МУТАБЕЛЬНЫЕ
 
 arrWorck.forEach((index) => {
-    console.log(index);
+  console.log(index);
 });
 
 let newArr = arrWorck.map((index) => {
-    return index * 2
-})
+  return index * 2;
+});
 
 newArr = arrWorck.filter((index) => {
-    return index % 2 === 0
-})
+  return index % 2 === 0;
+});
 
 newArr = arrWorck.reduce((acc, index) => {
-    return acc + index
-}, 0)
+  return acc + index;
+}, 0);
 
 newArr = arrWorck.indexOf(2);
 
 newArr = arrWorck.lastIndexOf(2);
 
-newArr = arrWorck.join('-'); // '1-2-3-4-5-6'
+newArr = arrWorck.join("-"); // '1-2-3-4-5-6'
 
 newArr = arrWorck.slice(1, 3);
 
@@ -43,8 +76,7 @@ newArr = arrWorck.find((index) => index === 2);
 
 newArr = arrWorck.findIndex((index) => index === 2);
 
-Array.isArray(arrWorck)
-
+Array.isArray(arrWorck);
 
 //СТРОКИ
 // length(): Возвращает длину строки.
@@ -114,7 +146,6 @@ let trimmedStr = str.trim(); // trimmedStr is "Hello"
 str = "Hello";
 let startsWith = str.startsWith("He"); // startsWith is true
 
-
 // endsWith(String suffix): Проверяет, заканчивается ли строка указанным суффиксом.
 
 str = "Hello";
@@ -145,44 +176,44 @@ console.log(num); // выводит 10
 
 //parseFloat() - преобразует строку в число с плавающей запятой:
 
- numStr = "10.5";
- num = parseFloat(numStr);
+numStr = "10.5";
+num = parseFloat(numStr);
 console.log(num); // выводит 10.5
 
 //Math.round() - округляет число до ближайшего целого:
 
- num = 10.6;
+num = 10.6;
 console.log(Math.round(num)); // выводит 11
 
 //Math.ceil() - округляет число до ближайшего большего целого:
 
- num = 10.4;
+num = 10.4;
 console.log(Math.ceil(num)); // выводит 11
 
 //Math.floor() - округляет число до ближайшего меньшего целого:
 
- num = 10.6;
+num = 10.6;
 console.log(Math.floor(num)); // выводит 10
 
 //Math.trunc() - округляет число до ближайшего меньшего целого:
 
- num = 10.6;
+num = 10.6;
 console.log(Math.trunc(num)); // выводит 10
 
 //Math.sign() - возвращает знак числа:
 
- num = 10;
- console.log(Math.sign(num)); // выводит 1
+num = 10;
+console.log(Math.sign(num)); // выводит 1
 
- num = -10;
- console.log(Math.sign(num)); // выводит -1
+num = -10;
+console.log(Math.sign(num)); // выводит -1
 
- num = 0;
- console.log(Math.sign(num)); // выводит 0
+num = 0;
+console.log(Math.sign(num)); // выводит 0
 
- //Math.sqrt() - вычисляет квадратный корень числа:
+//Math.sqrt() - вычисляет квадратный корень числа:
 
- num = 25;
- console.log(Math.sqrt(num)); // выводит 5
+num = 25;
+console.log(Math.sqrt(num)); // выводит 5
 
- //И ЕЩЕ Дофига чего, все есть на странице https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math
+//И ЕЩЕ Дофига чего, все есть на странице https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math
