@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML_form</title>
+    <link rel="stylesheet" href="./styil.css" />
+  </head>
+  <body class="wraper">
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo"> Logo </a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#menu1" class="nav__link"> Пункт меню 1 </a>
+            </li>
+            <li class="nav__item">
+              <a href="#menu2" class="nav__link"> Пункт меню 2 </a>
+            </li>
+            <li class="nav__item">
+              <a href="#menu3" class="nav__link"> Пункт меню 3 </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="main">
+      <div class="main__wrapper">
+        <section class="main__section" id="menu1">
+          <h2 class="main__title">Пункт меню 1</h2>
+          <p class="main__text">
+            Текст пункта меню 1 Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Quas iste numquam quaerat magni voluptates odio
+            consequatur nulla esse, obcaecati dignissimos accusantium, sapiente
+            blanditiis nesciunt dolorem? Delectus in fugiat praesentium modi
+            soluta amet sunt eveniet, suscipit doloribus exercitationem.
+            Perferendis odio libero placeat blanditiis at, dolorem fugit
+            accusantium ratione dolores, eligendi non.
+          </p>
+        </section>
+        <section class="main__section" id="menu2">
+          <h2 class="main__title">Пункт меню 2</h2>
+          <p class="main__text">
+            Текст пункта меню 2 Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Quas iste numquam quaerat magni voluptates odio
+            consequatur nulla esse, obcaecati dignissimos accusantium, sapiente
+            blanditiis nesciunt dolorem? Delectus in fugiat praesentium modi
+            soluta amet sunt eveniet, suscipit doloribus exercitationem.
+            Perferendis odio libero placeat blanditiis at, dolorem fugit
+            accusantium ratione dolores, eligendi non.
+          </p>
+        </section>
+        <section class="main__section" id="menu3">
+          <h2 class="main__title">Пункт меню 3</h2>
+          <div class="main__text-wrapper">
+            <p class="main__text">
+              <b>Текст пункта меню 3</b> <br />
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas iste
+              numquam quaerat magni voluptates odio consequatur nulla esse,
+              obcaecati dignissimos accusantium, sapiente blanditiis nesciunt
+              dolorem? Delectus in fugiat praesentium modi soluta amet sunt
+              eveniet, suscipit doloribus exercitationem. Perferendis odio
+              libero placeat blanditiis at, dolorem fugit accusantium ratione
+              dolores, eligendi non.
+            </p>
+            <p class="main__text">
+              <b>Текст пункта меню 3</b> <br />
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas iste
+              numquam quaerat magni voluptates odio consequatur nulla esse,
+              obcaecati dignissimos accusantium, sapiente blanditiis nesciunt
+              dolorem? Delectus in fugiat praesentium modi soluta amet sunt
+              eveniet, suscipit doloribus exercitationem. Perferendis odio
+              libero placeat blanditiis at, dolorem fugit accusantium ratione
+              dolores, eligendi non.
+            </p>
+            <p class="main__text">
+              <b>Текст пункта меню 3</b> <br />
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas iste
+              numquam quaerat magni voluptates odio consequatur nulla esse,
+              obcaecati dignissimos accusantium, sapiente blanditiis nesciunt
+              dolorem? Delectus in fugiat praesentium modi soluta amet sunt
+              eveniet, suscipit doloribus exercitationem. Perferendis odio
+              libero placeat blanditiis at, dolorem fugit accusantium ratione
+              dolores, eligendi non.
+            </p>
+          </div>
+        </section>
+      </div>
+      <section class="main__form">
+        <form id="form" action="#" class="form__wrapper">
+          <h2 class="form__title">Форма обратной связи</h2>
+          <p class="form__text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas iste
+            numquam quaerat magni voluptates odio consequatur nulla esse,
+            obcaecati dignissimos accusantium, sapiente blanditiis nesciunt
+            dolorem? Delectus in fugiat praesentium modi soluta amet sunt
+            eveniet, suscipit doloribus exercitationem. Perferendis odio libero
+            placeat blanditiis at, dolorem fugit accusantium ratione dolores,
+            eligendi non.
+          </p>
+          <div class="form__item">
+            <label for="username" class="form__label">Имя*</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Ваше имя"
+              class="form__input _req"
+            />
+          </div>
+          <div class="form__item">
+            <label for="email" class="form__label">Email*</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Ваш email"
+              class="form__input _req _email"
+            />
+          </div>
+          <div class="form__item">
+            <label for="phone" class="form__label">Телефон*</label>
+            <input
+              type="tel"
+              name="phone"
+              id="phone"
+              placeholder="Ваш телефон"
+              class="form__input _req"
+            />
+          </div>
+          <div class="form__item">
+            <label for="message" class="form__label">Сообщение</label>
+            <textarea
+              name="message"
+              id="message"
+              placeholder="Ваше сообщение"
+              class="form__textarea"
+            ></textarea>
+          </div>
+          <div class="form__item">
+            <input
+              checked
+              type="checkbox"
+              name="agree"
+              id="agree"
+              class="form__checkbox _req"
+            />
+            <label for="agree" class="form__label" >Согласие</label>
+          </div>
+          <button type="submit" class="form__button">Отправить</button>
+          <!-- <input type="submit" value="Отправить" class="form__button" /> -->
+        </form>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>2024. Все права защищены.</p>
+    </footer>
+    <script src="./main.js"></script>
+  </body>
+</html>
