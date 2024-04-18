@@ -34,27 +34,27 @@ const obj = {
   city: "London",
   friends: ["Pete", "Sam"],
 };
-// function toIterator(obj) {
-//     return {
-//       ...obj,
-//       [Symbol.iterator]() {
-//         const self = this;
-//         const keys = Object.keys(this);
-//         let counter = 0;
+function toIterator(obj) {
+  return {
+    ...obj,
+    [Symbol.iterator]() {
+      const self = this;
+      const keys = Object.keys(this);
+      let counter = 0;
 
-//         return {
-//           next() {
-//             if (counter < keys.length) {
-//               return { value: self[keys[counter++]], done: false };
-//             }
-//             return {
-//               done: true,
-//             };
-//           },
-//         };
-//       },
-//     };
-//   }
+      return {
+        next() {
+          if (counter < keys.length) {
+            return { value: self[keys[counter++]], done: false };
+          }
+          return {
+            done: true,
+          };
+        },
+      };
+    },
+  };
+}
 
 //   for (let value of toIterator(obj)) {
 //   console.log(value);
@@ -71,3 +71,27 @@ for (let key of Object.keys(obj)) {
 for (let entry of Object.entries(obj)) {
   console.log(entry);
 }
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function (nums) {
+// вариант 1
+  // const res = nums.filter((item, index) => nums.indexOf(item) === index);
+
+// вариант 2
+  // return [...new Set(nums)];
+
+// вариант 3
+ let res = nums.reduce((acc, i) => {
+    if (!acc.includes(i)) {
+      acc.push(i);
+    }
+    return acc;
+  },[])
+  return res;
+};
+console.log(removeDuplicates([ 1, 2, 3, 3, 2, 1 ]))
+
