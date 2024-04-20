@@ -139,12 +139,115 @@ function minUmbrellas(weather) {
   let count = 0;
   const uniqueArr = new Set(weather);
   uniqueArr.forEach((item) => {
-   if (item === "rainy" || item === "thunderstorms") {
-     count += 1;
-   }
- })
+    if (item === "rainy" || item === "thunderstorms") {
+      count += 1;
+    }
+  });
   return count;
 }
 console.log(minUmbrellas(["cloudy"]), 0);
 console.log(minUmbrellas(["rainy", "rainy", "rainy", "rainy"]), 1);
 console.log(minUmbrellas(["overcast", "rainy", "clear", "thunderstorms"]), 2);
+
+// Никита Хубаев, [19.04.2024 16:39]
+// Вот такую задачу после просмотра видео по базе JS можно решить?
+
+// Задача на собеседование: Создание и анализ сетки температур
+// Описание задачи:
+// Разработайте программу на JavaScript, которая создает и анализирует двухмерный массив данных о температуре.
+// Каждый элемент массива представляет собой температуру в определенной точке сетки.
+
+// Требования к задаче:
+// Инициализация сетки:
+// Создайте функцию initializeGrid, которая принимает два параметра: rows (количество строк) и cols (количество столбцов).
+// Функция должна создать и вернуть двухмерный массив размером rows x cols, где каждый элемент сетки инициализируется
+// случайной температурой от -10 до 40 градусов Цельсия.
+// Анализ сетки:
+// Создайте функцию analyzeGrid, которая принимает двухмерный массив температур и выполняет следующие аналитические задачи:
+// Найдите и верните максимальную температуру в сетке.
+// Найдите и верните минимальную температуру в сетке.
+// Вычислите и верните среднюю температуру по всей сетке.
+// Вывод результатов:
+// Функция analyzeGrid должна возвращать объект с тремя свойствами: maxTemp, minTemp, и averageTemp,
+// содержащими соответствующие аналитические результаты.
+
+function Temper(rows, cols) {
+  this.maxTemp = 0;
+  this.minTemp = 0;
+  this.averageTemp = 0;
+
+  this.random = function (a = -10, b = 40) {
+    return Math.round(Math.random() * (b - a) + a);
+  };
+
+  this.initializeGrid = function (rows, cols) {
+    return Array.from({ length: rows }, () =>
+      Array.from({ length: cols }, () => this.random())
+    );
+  };
+  this.grid = this.initializeGrid(rows, cols);
+ 
+  this.analyzeGrid = function () {
+    this.maxTemp = findMaxTemp(this.grid);
+    this.minTemp = findMinTemp(this.grid);
+    this.averageTemp = averageTemp(this.grid);
+    return {
+      maxTemp: this.maxTemp,
+      minTemp: this.minTemp,
+      averageTemp: this.averageTemp,
+    };
+  };
+  this.analyzeGrid();
+
+  function findMaxTemp(grid) {
+    let maxTemp = 0;
+    for (let i = 0; i < grid.length; i++) {
+      for (let j = 0; j < grid[i].length; j++) {
+        if (grid[i][j] > maxTemp) {
+          maxTemp = grid[i][j];
+        }
+      }
+    }
+    return maxTemp;
+  }
+
+  function findMinTemp(grid) {
+    let minTemp = 0;
+    for (let i = 0; i < grid.length; i++) {
+      for (let j = 0; j < grid[i].length; j++) {
+        if (grid[i][j] < minTemp) {
+          minTemp = grid[i][j];
+        }
+      }
+    }
+    return minTemp;
+  }
+
+  function averageTemp (grid){
+    let sum = 0;
+    for (let i = 0; i < grid.length; i++) {
+      for (let j = 0; j < grid[i].length; j++) {
+        sum += grid[i][j];
+      }
+    }
+    return  Number((sum / (grid.length * grid[0].length)).toFixed(2));
+  }
+
+  // вариант 2
+  
+   // this.analyzeGrid = function () {
+  //   this.maxTemp = this.grid.flat().reduce((a, b) => Math.max(a, b));
+  //   this.minTemp = this.grid.flat().reduce((a, b) => Math.min(a, b));
+  //   this.averageTemp =
+  //     this.grid.flat().reduce((a, b) => a + b) / this.grid.flat().length;
+  //   return {
+  //     maxTemp: this.maxTemp,
+  //     minTemp: this.minTemp,
+  //     averageTemp: this.averageTemp,
+  //   };
+  // };
+  // this.analyzeGrid();
+}
+
+let temper = new Temper(3, 3);
+console.log(temper.analyzeGrid());
