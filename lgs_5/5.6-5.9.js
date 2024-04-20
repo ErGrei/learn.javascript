@@ -234,12 +234,12 @@ function Temper(rows, cols) {
   }
 
   // вариант 2
-  
-   // this.analyzeGrid = function () {
+
+  //  this.analyzeGrid = function () {
   //   this.maxTemp = this.grid.flat().reduce((a, b) => Math.max(a, b));
   //   this.minTemp = this.grid.flat().reduce((a, b) => Math.min(a, b));
   //   this.averageTemp =
-  //     this.grid.flat().reduce((a, b) => a + b) / this.grid.flat().length;
+  //      Number((this.grid.flat().reduce((a, b) => a + b) / this.grid.flat().length).toFixed(2));
   //   return {
   //     maxTemp: this.maxTemp,
   //     minTemp: this.minTemp,
