@@ -22,7 +22,7 @@ function recursiveCountdown(seconds = 10) {
   // }
 }
 
-recursiveCountdown(5);
+// recursiveCountdown(5);
 
 // Ваша задача:
 // Написать функцию calculateAverageSalaries, которая принимает объект company и
@@ -61,12 +61,25 @@ let company = {
       },
     ],
 
-    internals: [
-      {
-        name: "Jack",
-        salary: 1300,
+    internals: {
+        sites: [
+          {
+            name: "Peter",
+            salary: 2000,
+          },
+          {
+            name: "Alex",
+            salary: 1800,
+          },
+        ],
+    
+        internals: [
+          {
+            name: "Jack",
+            salary: 1300,
+          },
+        ],
       },
-    ],
   },
 };
 
@@ -89,17 +102,32 @@ console.log(calculateAverageSalaries(company));
 
 const data = calculateAverageSalaries(company);
 
-const averageSalary = Object.entries(data).reduce((acc, [key, value]) => {
-  if (typeof value === 'number') {
-    acc[key] = value;
-  } else {
-    const average = Object.values(value).reduce((sum, val) => sum + val, 0) / Object.values(value).length;
-    acc[key] = average;
+function formattedSalary(data, level = 0) {
+  const averageSalary = {};
+
+  const getNestedSalaries = (obj, currentLevel) =>
+    Object.values(obj).reduce((acc, value) => {
+      if (currentLevel < level || typeof value === "number") {
+        return acc + value;
+      } else if (typeof value === "object") {
+        return acc + getNestedSalaries(value, currentLevel + 1);
+      }
+      return acc;
+    }, 0);
+
+  for (const [key, value] of Object.entries(data)) {
+    if (typeof value === "number") {
+      averageSalary[key] = value;
+    } else if (typeof value === "object") {
+      const nestedSalaries = getNestedSalaries(value, level + 1);
+      averageSalary[key] = nestedSalaries / Object.values(value).length;
+    }
   }
-  return acc;
-}, {});
 
-const formattedAverageSalary = Object.assign({}, ...Object.entries(averageSalary).map(([key, value]) => ({ [key]: value })));
+  return averageSalary;
+}
 
-console.log(formattedAverageSalary);
 
+
+
+console.log(formattedSalary(calculateAverageSalaries(company)));
