@@ -22,6 +22,37 @@ function queueTime(customers, n) {
 //   assert.strictEqual(queueTime([10,2,3,3], 2), 10); непроходит
 //   assert.strictEqual(queueTime([2,3,10,2], 2), 12);непроходит
 
+//убрать повторяющиеся элементы
+
+let unique = arr.filter((item, index) => arr.indexOf(item) === index);
+//вариант 2
+
+let unique2 = [...new Set(arr)];
+
+//вариант 3
+
+let unique3 = arr.reduce((acc, i) => {
+    if (!acc.includes(i)) {
+        acc.push(i);
+    }
+    return acc;
+})
+
+// найти сумму уникальных элементов
+
+let sum = arr.reduce((acc, i) => {
+    if (!acc.includes(i)) {
+        acc.push(i);
+    }
+    return acc;
+})
+
+
+unique = arr.filter((item, index) => arr.indexOf(item) === arr.lastIndexOf(item));
+
+unique.reduce((acc, i) => acc + i, 0);
+
+
 // Мутабельные методы массивов
 
 //push, pop, shift, unshift, splice, sort, reverse
@@ -200,7 +231,7 @@ function Temper(rows, cols) {
   this.analyzeGrid();
 
   function findMaxTemp(grid) {
-    let maxTemp = 0;
+    let maxTemp = -Infinity;
     for (let i = 0; i < grid.length; i++) {
       for (let j = 0; j < grid[i].length; j++) {
         if (grid[i][j] > maxTemp) {

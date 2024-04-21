@@ -62,6 +62,8 @@ newArr = arrWorck.reduce((acc, index) => {
   return acc + index;
 }, 0);
 
+newArr =arrWorck.includes(6)
+
 newArr = arrWorck.indexOf(2);
 
 newArr = arrWorck.lastIndexOf(2);
