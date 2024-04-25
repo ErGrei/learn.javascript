@@ -82,3 +82,33 @@ function shortenNumber(base, power) {
 }
 
 console.log(shortenNumber(["", "k", "m"], 1000)("234324"));
+
+/**
+ * Меняет местами начало и конец указанного массива:
+ * голова (первая половина) массива перемещается в конец, хвост (последняя половина) перемещается в начало.
+ * Средний элемент (если существует) оставьте на том же месте. *
+ *
+ *   [ 1, 2, 3, 4, 5 ]   =>  [ 4, 5, 3, 1, 2 ]
+ *    \----/   \----/
+ *     head     tail
+ *
+ *   swapHeadAndTail([ 1, 2 ]) => [ 2, 1 ]
+ *   swapHeadAndTail([ 1, 2, 3, 4, 5, 6, 7, 8 ]) =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
+ *   swapHeadAndTail([ 1 ]) => [ 1 ]
+ *   swapHeadAndTail([]) => []
+ *
+ */
+function swapHeadAndTail(arr) {
+  const head = arr.slice(0, Math.floor(arr.length / 2));
+  const middle = arr.slice(
+    Math.floor(arr.length / 2),
+    Math.floor(arr.length / 2) + (arr.length % 2 ? 1 : 0)
+  );
+  const tail = arr.slice(
+    Math.floor(arr.length / 2) + (arr.length % 2 ? 1 : 0),
+    arr.length
+  );
+  return [tail, middle, head].flat(Infinity);
+}
+
+console.log(swapHeadAndTail([1, 2, 3, 4, 5, 6, 7, 8]));
