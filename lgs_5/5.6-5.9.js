@@ -1,18 +1,3 @@
-// Задача из таблицы
-// вход
-// customers: массив положительных целых чисел, представляющих очередь. Каждое целое число представляет клиента, а его значение — это количество времени, необходимое ему для оформления заказа.
-// n: положительное целое число, количество касс.
-// выход
-// Функция должна возвращать целое число — общее требуемое время.
-
-function queueTime(customers, n) {
-  if (customers.length === 0) {
-    return 0;
-  }
-  let res = customers.reduce((acc, item) => (acc += item), 0);
-  return Math.floor(res / n);
-}
-
 //   assert.strictEqual(queueTime([], 1), 0);
 //   assert.strictEqual(queueTime([1,2,3,4], 1), 10);
 //   assert.strictEqual(queueTime([2,2,3,3,4,4], 2), 9);

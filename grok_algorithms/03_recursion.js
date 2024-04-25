@@ -8,16 +8,16 @@
 // Гарантировать, что рекурсивные вызовы функции корректно управляются с задержкой в одну секунду.
 // Обеспечить чистоту вывода: функция должна четко сообщать пользователю о каждой секунде отсчета и о завершении отсчета.
 
-// function recursiveCountdown(seconds = 10, count ) {
-// if (seconds === 0){
-//   console.log('Отсчет завершен!')
-// } else {
-//   console.log(`Осталось секунд: ${seconds}`)
-//   setTimeout(()=>recursiveCountdown(--seconds),1000)
-// }
-// }
+function recursiveCountdown(seconds = 10, count ) {
+if (seconds === 0){
+  console.log('Отсчет завершен!')
+} else {
+  console.log(`Осталось секунд: ${seconds}`)
+  setTimeout(()=>recursiveCountdown(--seconds),1000)
+}
+}
 
-// recursiveCountdown();
+recursiveCountdown();
 
 // Ваша задача:
 // Написать функцию calculateAverageSalaries, которая принимает объект company и
@@ -94,61 +94,61 @@ function calculateAverageSalaries(obj, result = {}) {
   return result;
 }
 
-// console.log(calculateAverageSalaries(company));
+console.log(calculateAverageSalaries(company));
 
-// const data = calculateAverageSalaries(company);
+const data = calculateAverageSalaries(company);
 
-// function formattedSalary(data, level = 0) {
-//   const averageSalary = {};
+function formattedSalary(data, level = 0) {
+  const averageSalary = {};
 
-//   const getNestedSalaries = (obj, currentLevel) =>
-//     Object.values(obj).reduce((acc, value) => {
-//       if (currentLevel < level || typeof value === "number") {
-//         return acc + value;
-//       } else if (typeof value === "object") {
-//         return acc + getNestedSalaries(value, currentLevel + 1);
-//       }
-//       return acc;
-//     }, 0);
+  const getNestedSalaries = (obj, currentLevel) =>
+    Object.values(obj).reduce((acc, value) => {
+      if (currentLevel < level || typeof value === "number") {
+        return acc + value;
+      } else if (typeof value === "object") {
+        return acc + getNestedSalaries(value, currentLevel + 1);
+      }
+      return acc;
+    }, 0);
 
-//   for (const [key, value] of Object.entries(data)) {
-//     if (typeof value === "number") {
-//       averageSalary[key] = value;
-//     } else if (typeof value === "object") {
-//       const nestedSalaries = getNestedSalaries(value, level + 1);
-//       averageSalary[key] = nestedSalaries / Object.values(value).length;
-//     }
-//   }
+  for (const [key, value] of Object.entries(data)) {
+    if (typeof value === "number") {
+      averageSalary[key] = value;
+    } else if (typeof value === "object") {
+      const nestedSalaries = getNestedSalaries(value, level + 1);
+      averageSalary[key] = nestedSalaries / Object.values(value).length;
+    }
+  }
 
-//   return averageSalary;
-// }
+  return averageSalary;
+}
 
-// console.log(formattedSalary(calculateAverageSalaries(company)));
+console.log(formattedSalary(calculateAverageSalaries(company)));
 
-// function factorial(num, kesh = { 0: 1 }) {
+function factorial(num, kesh = { 0: 1 }) {
   //Хвостовая рекурсия
 
 
 
  //Кеширование
 
-  // if (kesh.hasOwnProperty(num)) {
-  //   return kesh[num];
-  // }
+  if (kesh.hasOwnProperty(num)) {
+    return kesh[num];
+  }
 
-  // kesh[num] = num * factorial(num -1, kesh);
-  // return kesh[num];
+  kesh[num] = num * factorial(num -1, kesh);
+  return kesh[num];
 
 // рекурсия
 
-  // if (num === 1) {
-  //   return 1;
-  // } else {
-  //   return num * factorial(--num);
-  // }
-// }
+  if (num === 1) {
+    return 1;
+  } else {
+    return num * factorial(--num);
+  }
+}
 
-// console.log(factorial(3));
+console.log(factorial(3));
 
 
 function fibonacciTail(n, a = 0, b = 1) {
