@@ -1,5 +1,6 @@
 newGame();
 let xIsNext = true;
+let step = [];
 function newGame() {
   const bodi = document.querySelector(".body");
   const wraper = document.createElement("div");
@@ -17,13 +18,14 @@ function createElements(wraper) {
     cell.classList.add("cell");
     wraper.append(cell);
   });
-  console.log(arrField);
+  // console.log(arrField);
 }
 
 function clickCell(e) {
   const cell = e.target;
-  const index = +cell.getAttribute("data-n");
+  const index = cell.getAttribute("data-n");
   gameMoves(cell);
+  checkWin(index);
 }
 
 function eventListener() {
@@ -34,7 +36,7 @@ function eventListener() {
 }
 
 function gameMoves(cell) {
-  console.log(xIsNext);
+  // console.log(xIsNext);
   toggle();
   function toggle() {
     if (cell.textContent !== "") {
@@ -50,6 +52,25 @@ function gameMoves(cell) {
   }
 }
 
-function checkWin() {
+function checkWin(indexStep) {
+  const wim = ["012", "345", "678", "036", "147", "258", "048", "246"];
 
+  // console.log(indexStep);
+  if (xIsNext) {
+    step.push(indexStep);
+    console.log(step);
+  }
+
+  for (let i = 0; i < wim.length; i++) {
+    const winPattern = wim[i];
+    let count = 0;
+    winPattern.split("").forEach((char) => {
+      if (step.includes(char)) {
+        count++;
+      }
+    });
+    if (count === 3) {
+      console.log('win');
+    }
+  }
 }
