@@ -86,3 +86,52 @@ function getLocalDay(date) {
 }
 
 console.log(getLocalDay(date));
+
+// Создайте функцию getDateAgo(date, days), возвращающую число, которое было days дней назад от даты date.
+
+// К примеру, если сегодня двадцатое число, то getDateAgo(new Date(), 1) вернёт девятнадцатое и getDateAgo(new Date(), 2) – восемнадцатое.
+
+// Функция должна надёжно работать при значении days=365 и больших значениях:
+
+let date1 = new Date(2015, 0, 2);
+
+function getDateAgo(date, days) {
+  let dateCopy = new Date(date);
+
+  dateCopy.setDate(date.getDate() - days);
+  return dateCopy.getDate();
+}
+
+console.log( getDateAgo(date1, 1) ); // 1, (1 Jan 2015)
+console.log( getDateAgo(date1, 2) ); // 31, (31 Dec 2014)
+console.log( getDateAgo(date1, 365) ); // 2, (2 Jan 2014)
+
+
+// Напишите функцию getLastDayOfMonth(year, month), возвращающую последнее число месяца. Иногда это 30, 31 или даже февральские 28/29.
+
+// Параметры:
+
+// year – год из четырёх цифр, например, 2012.
+// month – месяц от 0 до 11.
+// К примеру, getLastDayOfMonth(2012, 1) = 29 (високосный год, февраль).
+
+function getLastDayOfMonth(year, month) {
+  let date = new Date(year, month + 1, 0);
+  return date.getDate();
+}
+
+console.log( getLastDayOfMonth(2012, 0) ); // 31
+console.log( getLastDayOfMonth(2012, 1) ); // 29
+console.log( getLastDayOfMonth(2013, 1) ); // 28
+
+// Преобразуйте user в JSON, затем прочитайте этот JSON в другую переменную.
+
+let user1 = {
+  name: "Василий Иванович",
+  age: 35
+};
+
+let userJSON = JSON.parse(JSON.stringify(user));
+
+console.log(userJSON);
+
