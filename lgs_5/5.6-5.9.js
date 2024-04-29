@@ -17,26 +17,26 @@ let unique2 = [...new Set(arr)];
 //вариант 3
 
 let unique3 = arr.reduce((acc, i) => {
-    if (!acc.includes(i)) {
-        acc.push(i);
-    }
-    return acc;
-})
+  if (!acc.includes(i)) {
+    acc.push(i);
+  }
+  return acc;
+});
 
 // найти сумму уникальных элементов
 
 let sum = arr.reduce((acc, i) => {
-    if (!acc.includes(i)) {
-        acc.push(i);
-    }
-    return acc;
-})
+  if (!acc.includes(i)) {
+    acc.push(i);
+  }
+  return acc;
+});
 
-
-unique = arr.filter((item, index) => arr.indexOf(item) === arr.lastIndexOf(item));
+unique = arr.filter(
+  (item, index) => arr.indexOf(item) === arr.lastIndexOf(item)
+);
 
 unique.reduce((acc, i) => acc + i, 0);
-
 
 // Мутабельные методы массивов
 
@@ -95,6 +95,27 @@ function toIterator(obj) {
     },
   };
 }
+
+Array.prototype[Symbol.iterator] = function () {
+  const self = this;
+  const keys = Object.keys(this);
+  let counter = 0;
+  return {
+    next() {
+      if (counter < keys.length) {
+        return { value: self[keys[counter++]], done: false };
+      }
+      return {
+        done: true,
+      };
+    },
+  };
+};
+
+// let arr = [1];
+// arr.test = "123";
+// let arr2 = [...arr];
+// console.log(arr);
 
 //   for (let value of toIterator(obj)) {
 //   console.log(value);
@@ -202,7 +223,7 @@ function Temper(rows, cols) {
     );
   };
   this.grid = this.initializeGrid(rows, cols);
- 
+
   this.analyzeGrid = function () {
     this.maxTemp = findMaxTemp(this.grid);
     this.minTemp = findMinTemp(this.grid);
@@ -239,14 +260,14 @@ function Temper(rows, cols) {
     return minTemp;
   }
 
-  function averageTemp (grid){
+  function averageTemp(grid) {
     let sum = 0;
     for (let i = 0; i < grid.length; i++) {
       for (let j = 0; j < grid[i].length; j++) {
         sum += grid[i][j];
       }
     }
-    return  Number((sum / (grid.length * grid[0].length)).toFixed(2));
+    return Number((sum / (grid.length * grid[0].length)).toFixed(2));
   }
 
   // вариант 2
