@@ -96,26 +96,6 @@ function toIterator(obj) {
   };
 }
 
-Array.prototype[Symbol.iterator] = function () {
-  const self = this;
-  const keys = Object.keys(this);
-  let counter = 0;
-  return {
-    next() {
-      if (counter < keys.length) {
-        return { value: self[keys[counter++]], done: false };
-      }
-      return {
-        done: true,
-      };
-    },
-  };
-};
-
-// let arr = [1];
-// arr.test = "123";
-// let arr2 = [...arr];
-// console.log(arr);
 
 //   for (let value of toIterator(obj)) {
 //   console.log(value);
