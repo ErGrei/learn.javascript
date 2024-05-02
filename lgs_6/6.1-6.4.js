@@ -132,3 +132,32 @@ function printListRec(list) {
 
 console.log("printListRec", printListRec(list));
 
+// Рекурсия сохранит в кэш
+
+const arr = [1, 2, 3, 4, 5];
+
+
+
+function sumArr(arr) {
+  if (arr.length == 1) {
+    return arr[0];
+  } else {
+    return arr[0] + sumArr(arr.slice(1));
+  }
+  
+}
+
+function sumArrKesh(sumArr) {
+  const ceche = {};
+
+  return function (arr) {
+    if (arr.length == 1) {
+      return arr[0];
+    } else if (ceche[arr]) {
+      return ceche[arr];
+    } else {
+      ceche[arr] = arr[0] + sumArr(arr.slice(1));
+      return ceche[arr];
+    }
+  }
+}

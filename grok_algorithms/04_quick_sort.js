@@ -48,5 +48,34 @@ function selectionSort(arr) {
 }
 
 let arr2 = [1, 1, 1, 1, 1, 12, 2, , 33, 5, 5, 5, 8, 8, 8, 8];
-console.log(selectionSort(arr(100_000, 100)));
+// console.log(selectionSort(arr(100_000, 100)));
 // console.log(quickSort(arr(100_000, 100)));
+
+
+// function quickSortSet(arr) {
+//   //   console.log(arr);
+//   if (arr.length < 2) {
+//     return arr;
+//   }
+//   const index = Math.floor(Math.random() * arr.length);
+//   const pivot = arr[index];
+//   const left = [];
+//   const right = [];
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] < pivot) {
+//       left.push(arr[i]);
+//     } else if (arr[i] > pivot) {
+//       right.push(arr[i]);
+//     }  else {
+//        continue;
+//      }
+//   }
+//   //   console.log(left);
+//   //   console.log(right);
+//   const res = [...quickSort(left), pivot, ...quickSort(right)];
+//   //   console.log(res);
+//   return res;
+// }
+
+// console.log(quickSortSet(arr2));
