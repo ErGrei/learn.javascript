@@ -1,3 +1,33 @@
+// Напишите функцию printNumbers(from, to), которая выводит число каждую секунду, начиная от from и заканчивая to.
+function printNumbers(from, to) {
+  let current = from;
+
+  let timerId = setInterval(function() {
+    console.log(current);
+    if (current == to) {
+      clearInterval(timerId);
+    }
+    current++;
+  }, 1000);
+}
+
+console.log(printNumbers(10, 20));
+
+
+// Свой счетчик рекурсией
+
+function recursiveCountdown(seconds = 10, count ) {
+  if (seconds === 0){
+    console.log('Отсчет завершен!')
+  } else {
+    console.log(`Осталось секунд: ${seconds}`)
+    setTimeout(()=>recursiveCountdown(--seconds),1000)
+  }
+  }
+  
+  recursiveCountdown();
+
+
 // Создайте декоратор spy(func), который должен возвращать обёртку, которая сохраняет все вызовы функции в своём свойстве calls.
 
 // Каждый вызов должен сохраняться как массив аргументов.
@@ -51,7 +81,7 @@ function delay(f, ms) {
   
   }
   
-  let f1000 = delay(alert, 1000);
+  let f1000 = delay(console.log, 1000);
   
   f1000("test");
 
@@ -66,3 +96,29 @@ function delay(f, ms) {
   
 //   }
 
+// Вызов askPassword() в приведённом ниже коде должен проверить пароль и затем вызвать user.loginOk/loginFail в зависимости от ответа.
+
+// Однако, его вызов приводит к ошибке. Почему?
+
+// Исправьте выделенную строку, чтобы всё работало (других строк изменять не надо).
+
+function askPassword(ok, fail) {
+  let password = prompt("Password?", '');
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let user = {
+  name: 'Вася',
+
+  loginOk() {
+    console.log(`${this.name} logged in`);
+  },
+
+  loginFail() {
+    console.log(`${this.name} failed to log in`);
+  },
+
+};
+
+askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
