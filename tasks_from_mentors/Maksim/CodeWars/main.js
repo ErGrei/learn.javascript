@@ -16,6 +16,6 @@ document.querySelector(".btn_task").addEventListener("click", () => {
 
 function resultTask (resultValue){
 if (resultValue === 3){
-  document.querySelector(".input_value").value = resultValue;
-}
+  document.querySelector(".input_value").value = `'ожидаемое значение 3, полеченное значение' ${resultValue} 'вы молодец'`;
+} else {document.querySelector(".input_value").value = `'ожидаемое значение 3, полеченное значение' ${resultValue} 'подумайте еще'`;}
 }
