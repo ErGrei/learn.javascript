@@ -1,8 +1,7 @@
 import { tasks } from "./src/task_object.js";
-taskInit(0);
+// taskInit(0);
 function taskInit(value) {
   let taskValue = Array.from(tasks.keys())[value];
-  console.log(taskValue);
 
   document.querySelector(".input_task").value = tasks.get(taskValue);
 
@@ -10,12 +9,11 @@ function taskInit(value) {
 
   document.querySelector(".btn_task").addEventListener("click", () => {
     const task = document.querySelector(".input_task").value;
-    // console.log(task);
+
     const result = new Function("return " + task)();
     let resultValue = result(a, b);
-    console.log(result(a, b));
-    resultTask(result(a, b), taskValue);
-    //   document.querySelector(".input_task").value = result;
+
+    resultTask(resultValue, taskValue);
   });
   document.querySelector(".description").innerHTML = taskValue.description;
 }
@@ -48,8 +46,4 @@ function selectTask() {
   });
 }
 selectTask();
-console.log(selectTasks(0));
 
-function selectTasks(value) {
-  return value;
-}
