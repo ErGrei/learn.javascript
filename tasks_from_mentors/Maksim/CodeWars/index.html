@@ -6,7 +6,10 @@
     <title>mini CodeWars</title>
     <link rel="stylesheet" href="./style.css" />
     <!-- <link rel="stylesheet" href="./mocha.css" /> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
     <script>
       mocha.setup("bdd");
@@ -28,13 +31,23 @@
         <option value="4">task 5</option>
       </select>
       <!-- <p class="description"></p> -->
-      <textarea type="text" class="description"></textarea>
-      <textarea type="text" class="input_task"></textarea>
-      <button class="btn_task">отправить решение</button>
-      <div class="mocha" id="mocha"></div>
-      <textarea type="text" class="input_value" id="mocha"></textarea>
-      <h2 class="test__title">test</h2>
-      <textarea type="text" class="test"></textarea>
+      <div class="wrapper">
+        <div class="example">
+          <textarea type="text" class="description"></textarea>
+          <h2 class="test__title">Тесты</h2>
+          <textarea type="text" class="test"></textarea>
+        </div>
+        <div class="description_test">
+          <textarea type="text" class="input_task"></textarea>
+          <button class="btn_task">отправить решение</button>
+
+          <div class="solution"></div>
+        </div>
+      </div>
+      <div class="testing">
+        <div class="mocha" id="mocha"></div>
+      </div>
+      <!-- <textarea type="text" class="input_value" id="mocha"></textarea> -->
     </main>
     <script src="./main.js" type="module"></script>
   </body>

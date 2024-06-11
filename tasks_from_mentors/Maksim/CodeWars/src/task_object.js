@@ -12,26 +12,77 @@ tasks.set(
      @example:
        5, 10 => 50
        5, 5  => 25`,
-    example: { a: 5, b: 2 },
     solution: function getRectangleArea(width, height) {
-      const area = width * height;
-      return area;
+      return width * height;
     },
+    
   },
-  function getRectangleArea(a, b) {
+  {
+    test: `describe("тест 1", function () {
+      it("should return the area of a rectangle with positive width and height", function () {
+        assert.equal(val(5, 10), 50);
+      });
+  
+      it("should return the area of a rectangle with negative width and height", function () {
+        assert.equal(val(-5, -10), 50);
+      });
+  
+      it("should return the area of a rectangle with zero width and height", function () {
+        assert.equal(val(0, 0), 0);
+      });
+    });
+    `,
 
+    func: function getRectangleArea(width, height) {},
   }
 );
 tasks.set(
   {
     name: "task_2",
-    description:
-      "Напишите функцию которая должна вычесть из первого числа второе и вернуть результат. В качестве аргументов функция должна принимать два числа.",
-    example: { a: 5, b: 2 },
-    solution: (a, b) => a - b,
-  },
+    description: ` Inverts the case of each character in the given string.
+      
+       @param {string} str - The input string.
+       @returns {string} - The string with the case of each character inverted.
+      
+       @example
+         invertCase('Hello, World!') =>  'hELLO, wORLD!'
+         invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
+         invertCase('12345') => '12345'`,
 
-  function subtraction(a, b) {}
+    solution: function invertCase(str) {
+      let res = "";
+      for (let i = 0; i < str.length; i += 1) {
+        if (str[i] === str[i].toLowerCase()) {
+          res += str[i].toUpperCase();
+        } else {
+          res += str[i].toLowerCase();
+        }
+      }
+      return res;
+    },
+  },
+  {
+    test: `function () {
+
+      it("возвращает строку с обратным регистром", function () {
+        assert.equal(val('Hello, World!'), 'hELLO, wORLD!');
+      });
+  
+      it("should return the area of a rectangle with negative width and height", function () {
+        assert.equal(val('JavaScript is Fun'), 'jAVAsCRIPT IS fUN');
+      });
+  
+      it("should return the area of a rectangle with zero width and height", function () {
+        assert.equal(val('12345'), '12345');
+        assert.equal(val('!@#$'), '!@#$');
+        assert.equal(val(''), '');
+        assert.equal(val('Hello, 12345!'), 'hELLO, 12345!');
+        assert.equal(val('1a2b3c4d5'), '1A2B3C4D5');
+      });
+    }`,
+
+    func: function invertCase(str) {},
+  }
 );
 tasks.set(
   {
