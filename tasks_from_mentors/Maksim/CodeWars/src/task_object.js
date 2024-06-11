@@ -3,12 +3,22 @@ export const tasks = new Map();
 tasks.set(
   {
     name: "task_1",
-    description:
-      "Напишите функцию которая должна возвращать сумму двух чисел. В качестве аргументов функция должна принимать два числа.",
+    description: `Returns an area of a rectangle given by width and height.
+    
+     @param {number} width
+     @param {number} height
+     @return {number}
+    
+     @example:
+       5, 10 => 50
+       5, 5  => 25`,
     example: { a: 5, b: 2 },
-    solution: (a, b) => a + b,
+    solution: function getRectangleArea(width, height) {
+      const area = width * height;
+      return area;
+    },
   },
-  function sum(a, b) {
+  function getRectangleArea(a, b) {
 
   }
 );
@@ -21,9 +31,7 @@ tasks.set(
     solution: (a, b) => a - b,
   },
 
-  function subtraction(a, b) {
-
-  }
+  function subtraction(a, b) {}
 );
 tasks.set(
   {
@@ -34,9 +42,7 @@ tasks.set(
     solution: (a, b) => a / b,
   },
 
-  function division(a, b) {
-
-  }
+  function division(a, b) {}
 );
 tasks.set(
   {
@@ -47,9 +53,7 @@ tasks.set(
     solution: (a, b) => a * b,
   },
 
-  function multiplication(a, b) {
-
-  }
+  function multiplication(a, b) {}
 );
 tasks.set(
   {
@@ -60,7 +64,5 @@ tasks.set(
     solution: (a, b) => a % b,
   },
 
-  function remainder(a, b) {
-
-  }
+  function remainder(a, b) {}
 );

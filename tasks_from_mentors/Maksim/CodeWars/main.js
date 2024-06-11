@@ -1,4 +1,7 @@
 import { tasks } from "./src/task_object.js";
+import { runTests } from "./src/test.js";
+// import { describe, it, expect } from './node_modules/@jest';
+
 // taskInit(0);
 function taskInit(value) {
   let taskValue = Array.from(tasks.keys())[value];
@@ -13,7 +16,10 @@ function taskInit(value) {
     const result = new Function("return " + task)();
     let resultValue = result(a, b);
 
-    resultTask(resultValue, taskValue);
+    // resultTask(resultValue, taskValue);
+    // mocha.run()
+    // resultTest(result);
+    runTests(result);
   });
   document.querySelector(".description").innerHTML = taskValue.description;
 }
@@ -46,4 +52,3 @@ function selectTask() {
   });
 }
 selectTask();
-
