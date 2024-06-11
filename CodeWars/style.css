@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+body{
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+
+}
 .header {
   background-color: rgb(150, 247, 247);
   height: 100px;
@@ -18,15 +24,22 @@
 .main {
   /* display: flex; */
   justify-content: center;
+  margin: 50px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .input_task {
   display: block;
   padding: 10px;
-  margin: 0 auto;
+  margin: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 300px;
+  min-width: 30vw;
   height: 300px;
   font-size: 20px;
 }
@@ -41,13 +54,52 @@
   font-size: 20px;
 }
 
-.input_value{
+.input_value {
   display: block;
   padding: 10px;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 300px;
+  width: 50vw;
   height: 300px;
+  font-size: 20px;
+}
+
+.select_task {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.description {
+  display: block;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 50vw;
+  height: 300px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.test__title {
+  text-align: center;
+  font-size: 40px;
+}
+
+.test {
+  display: block;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 50vw;
+  height: 300px;
+  text-align: left;
   font-size: 20px;
 }
