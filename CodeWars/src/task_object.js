@@ -3,7 +3,7 @@ export const tasks = new Map();
 tasks.set(
   {
     name: "task_1",
-    description: `Returns an area of a rectangle given by width and height.
+    description: `Верните площадь прямоугольника, заданную шириной и высотой.
     
      @param {number} width
      @param {number} height
@@ -18,28 +18,33 @@ tasks.set(
     
   },
   {
-    test: `describe("тест 1", function () {
-      it("should return the area of a rectangle with positive width and height", function () {
-        assert.equal(val(5, 10), 50);
+    test: `describe("Результаты тестов", function () {
+    before(() => {
+       console.log(result)
+    }) 
+      it("Проверяем, что функция возвращает правильную область прямоугольника при положительных параметрах", function () {
+        assert.equal(result(5, 10), 50);
       });
   
-      it("should return the area of a rectangle with negative width and height", function () {
-        assert.equal(val(-5, -10), 50);
+      it("Проверяем, что функция возвращает правильную область прямоугольника при отрицательных параметрах", function () {
+        assert.equal(result(-5, -10), 50);
       });
   
-      it("should return the area of a rectangle with zero width and height", function () {
-        assert.equal(val(0, 0), 0);
+      it("Проверяем, что функция возвращает правильную область прямоугольника при нулевых параметрах", function () {
+        assert.equal(result(0, 0), 0);
       });
     });
     `,
 
-    func: function getRectangleArea(width, height) {},
+    func: function getRectangleArea(width, height) {
+
+    },
   }
 );
 tasks.set(
   {
     name: "task_2",
-    description: ` Inverts the case of each character in the given string.
+    description: ` Инвертируйте регистр каждого символа в заданной строке.
       
        @param {string} str - The input string.
        @returns {string} - The string with the case of each character inverted.
@@ -62,58 +67,106 @@ tasks.set(
     },
   },
   {
-    test: `function () {
-
-      it("возвращает строку с обратным регистром", function () {
-        assert.equal(val('Hello, World!'), 'hELLO, wORLD!');
+    test: `describe("Результаты тестов", function () {
+    before(() => {
+       console.log(result)
+    }) 
+       it("возвращает строку с обратным регистром", function () {
+        // Проверяем, что функция возвращает строку с обратным регистром
+        assert.equal(result('Hello, World!'), 'hELLO, wORLD!');
       });
   
-      it("should return the area of a rectangle with negative width and height", function () {
-        assert.equal(val('JavaScript is Fun'), 'jAVAsCRIPT IS fUN');
+      it("возвращает строку с обратным регистром символов из строки 'JavaScript is Fun'", function () {
+        assert.equal(result('JavaScript is Fun'), 'jAVAsCRIPT IS fUN');
       });
   
-      it("should return the area of a rectangle with zero width and height", function () {
-        assert.equal(val('12345'), '12345');
-        assert.equal(val('!@#$'), '!@#$');
-        assert.equal(val(''), '');
-        assert.equal(val('Hello, 12345!'), 'hELLO, 12345!');
-        assert.equal(val('1a2b3c4d5'), '1A2B3C4D5');
+      it("возвращает одинаковую строку, если входная строка не содержит символов нижнего регистра", function () {
+        assert.equal(result('12345'), '12345');
+        assert.equal(result('!@#$'), '!@#$');
+        assert.equal(result(''), '');
       });
-    }`,
+  
+      it("возвращает строку с обратным регистром символов из строки 'Hello, 12345!'", function () {
+        assert.equal(result('Hello, 12345!'), 'hELLO, 12345!');
+      });
+  
+      it("возвращает строку с обратным регистром символов из строки '1a2b3c4d5'", function () {
+        assert.equal(result('1a2b3c4d5'), '1A2B3C4D5');
+      });
+    });
+    `,
 
-    func: function invertCase(str) {},
+    func: function invertCase(str) {
+
+    },
   }
 );
 tasks.set(
   {
     name: "task_3",
-    description:
-      "Напишите функцию которая должна делить первое число на второе и вернуть результат. В качестве аргументов функция должна принимать два числа.",
-    example: { a: 5, b: 2 },
-    solution: (a, b) => a / b,
-  },
+    description:` Дана матрица, прямоугольная матрица целых чисел,
+ просто сложите все значения, которые не отображаются ниже «0».
+ 
+ @param {Array<Array>} matrix
+ @return {Number}
 
-  function division(a, b) {}
-);
-tasks.set(
+ @example
+ matrix = [
+[0, 1, 1, 2],
+[0, 5, 0, 0],
+[2, 0, 3, 3]
+]
+
+The result should be 9`,
+
+    solution: function getMatrixElementsSum(matrix) {
+      let sum = 0;
+      for (let rowIndex = 0; rowIndex < matrix.length; rowIndex += 1){
+        const row = matrix[rowIndex];
+        for (let columnIndex = 0; columnIndex < row.length; columnIndex += 1){
+          sum += row[columnIndex];
+        }
+        if (row[row.length - 1] === 0){
+           break;
+        }
+      }
+     return sum;
+    }
+  },
   {
-    name: "task_4",
-    description:
-      "Напишите функцию которая должна умножать первое число на второе и вернуть результат. В качестве аргументов функция должна принимать два числа.",
-    example: { a: 5, b: 2 },
-    solution: (a, b) => a * b,
-  },
+    test: `describe("Результаты тестов", function () {
+    before(() => {
+       console.log(result)
+    }) 
+       it("возвращает сумму элементов матрицы, исключая элементы, которые находятся под нулевыми элементами", function () {
+        assert.equal(result([
+      [0, 1, 1, 2],
+      [0, 5, 0, 0],
+      [2, 0, 3, 3],
+    ]), 9);
+      });
+  
+      it("возвращает сумму элементов матрицы, исключая элементы, которые находятся под нулевыми элементами", function () {
+        assert.equal(result([
+      [1, 2, 3, 4],
+      [0, 5, 0, 0],
+      [2, 0, 3, 3],
+    ]), 15);
+      });
+  
+      it("возвращает сумму элементов матрицы, исключая элементы, которые находятся под нулевыми элементами", function () {
+        assert.equal(result([
+      [1, 1, 1],
+      [2, 2, 2],
+      [3, 3, 3],
+    ]), 18);
+      });
+    });
+    `,
 
-  function multiplication(a, b) {}
-);
-tasks.set(
-  {
-    name: "task_5",
-    description:
-      "Напишите функцию которая должна найти остаток от деления двух чисел и вернуть результат. В качестве аргументов функция должна принимать два числа.",
-    example: { a: 5, b: 2 },
-    solution: (a, b) => a % b,
-  },
+    func: function rotateMatrix(matrix) {
 
-  function remainder(a, b) {}
+    },
+  }
 );
+

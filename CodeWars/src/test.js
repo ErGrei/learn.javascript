@@ -12,16 +12,15 @@ function getRectangleArea(width, height) {
 
 // }
 
-describe("resultTest", function () {
-  it("возводит в n-ю степень", function () {
-    assert.equal(resultTest(5, 10), 50);
-    assert.equal(resultTest(3, 4), 81);
-  });
-});
+// describe("resultTest", function () {
+//   it("возводит в n-ю степень", function () {
+//     assert.equal(resultTest(5, 10), 50);
+//     assert.equal(resultTest(3, 4), 81);
+//   });
+// });
 
-export function runTests(val, testing) {
-  console.log(val);
+export function runTests(result, testing) {
+  // console.log(val);
+  testing;
   mocha.run();
-  testing();
-  // mocha.run();
 }

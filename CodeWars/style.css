@@ -92,7 +92,7 @@ body{
   font-size: 40px;
 }
 
-.test {
+.tests {
   display: block;
   padding: 10px;
   margin: 0 auto;
@@ -101,5 +101,27 @@ body{
   width: 50vw;
   height: 300px;
   text-align: left;
+  font-size: 20px;
+}
+
+.solution_wraper{
+  display: block;
+  padding: 10px;
+  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  min-width: 30vw;
+  height: 300px;
+  font-size: 20px;
+  border: 1px solid black;
+  overflow-x: auto;
+}
+.solution__btn{
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 50px;
   font-size: 20px;
 }

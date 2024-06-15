@@ -1,6 +1,7 @@
 import { tasks } from "./src/task_object.js";
 import { runTests } from "./src/test.js";
-// const assert = chai.assert;
+const assert = chai.assert;
+// const assertEqual = assert.equal;
 // import { describe, it, expect } from './node_modules/@jest';
 
 // taskInit(0);
@@ -9,12 +10,15 @@ class TaskInit {
     this.taskValue = Array.from(tasks.keys())[value];
     this.inputTaskElement = document.querySelector(".input_task");
     this.btnTaskElement = document.querySelector(".btn_task");
+    this.btnSolutionElement = document.querySelector(".solution__btn");
+    this.solutionDivElement = document.querySelector(".solution");
     this.descriptionElement = document.querySelector(".description");
     this.inputValueElement = document.querySelector(".input_value");
     this.mochaElement = document.querySelector(".mocha");
-    this.testsElement = document.querySelector(".test");
+    this.testsElement = document.querySelector(".tests");
 
     this.init();
+    this.initSolution()
     // this.initTest();
   }
 
@@ -29,14 +33,25 @@ class TaskInit {
       const result = new Function("return " + task)();
       // let resultValue = result(this.taskValue.example.a, this.taskValue.example.b);
 
-      const testing = new Function("return " + test);
-      console.log(testing);
+      //Решение с использованием функции eval
+      
+      // const testing = eval(test);
+
+      const testing = new Function('assert', 'result', "return " + test)(assert, result);
+      // console.log(testing);
 
       runTests(result, testing);
     });
 
     this.descriptionElement.innerHTML = this.taskValue.description;
     this.testsElement.innerHTML = testValue;
+  }
+
+  initSolution() {
+    this.btnSolutionElement.addEventListener("click", () => {
+      // console.log('работает')
+      this.solutionDivElement.innerHTML = this.taskValue.solution;
+    });
   }
 
   // initTest() {
@@ -52,11 +67,22 @@ class TaskInit {
 class SelectTask {
   constructor() {
     this.selectElement = document.querySelector(".select_task");
+    this.initChangeEvent();
+  }
 
-    this.selectElement.addEventListener("change", () => {
-      const selectedValue = Number(this.selectElement.value);
-      new TaskInit(selectedValue);
-    });
+  initChangeEvent() {
+    this.selectElement.addEventListener("change", () => this.onChange());
+  }
+
+  onChange() {
+    const selectedValue = Number(this.selectElement.value);
+    new TaskInit(selectedValue);
+    this.clearSolution();
+  }
+
+  clearSolution() {
+    const solutionDivElement = document.querySelector(".solution");
+    solutionDivElement.innerHTML = "";
   }
 }
 
