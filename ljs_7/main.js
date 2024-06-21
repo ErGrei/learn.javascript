@@ -112,3 +112,38 @@ speedy2.eat("banana");
 console.log(speedy2.stomach);
 
 console.log(lazy2.stomach);
+
+
+// Добавьте всем функциям в прототип метод defer(ms), который вызывает функции через ms миллисекунд.
+
+// После этого должен работать такой код:
+
+function f() {
+  console.log("Hello!");
+}
+
+f.defer(1000); // выведет "Hello!" через 1 секунду
+
+Function.prototype.defer = function (ms) {
+  setTimeout(this, ms);
+};
+
+f.defer(1000);
+
+
+// Добавьте всем функциям в прототип метод defer(ms), который возвращает обёртку, откладывающую вызов функции на ms миллисекунд.
+
+// Например, должно работать так:
+
+function f(a, b) {
+  console.log( a + b );
+}
+
+f.defer(1000)(1, 2); // выведет 3 через 1 секунду.
+
+Function.prototype.defer = function (ms) {
+  let that = this;
+  return function (...args) {
+    setTimeout(() => that.apply(this, args), ms);
+  }
+}
