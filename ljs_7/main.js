@@ -9,13 +9,18 @@ let rabbit = {
   jumps: true,
 };
 
+let aaa ={
+  __proto__: animal
+}
+
 console.log(rabbit.jumps); // true(1)
 
-delete rabbit.jumps;
+ rabbit.jumps = 'aaa';
 
-console.log(rabbit.jumps); // null (2)
+ console.log(aaa.jumps); 
+console.log(animal.jumps); // null (2)
 
-delete animal.jumps;
+animal.jumps = 'aboba';
 
 console.log(rabbit.jumps); // undefined (3)
 
