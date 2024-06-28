@@ -14,12 +14,23 @@ Function.prototype.castomBind = function (context, ...args) {
 Function.prototype.castomCall = function (context, ...args) {
   const func = this;
   const contextObj = Object.create(context);
+  // const id = Symbol("id");
+  // context[id] = func;
   const funcName = func.name || "";
   contextObj[funcName] = func;
-  const result = func(...args);
-  delete contextObj[funcName];
+  const result = contextObj[funcName] (...args);
+  // delete context[id];
   return result;
 };
+
+Function.prototype.castomApply = function (context, args) {
+  const func = this;
+  const id = Symbol("id");
+  context[id] = func;
+  const result = context[id](...args);
+  delete context[id];
+  return result;
+}
 
 
 
@@ -33,6 +44,8 @@ function foo(a, b, c) {
   console.log(this.name, c);
 }
 
-foo.castomBind(obj, 1)(2, 3);
+// foo.castomBind(obj, 1)(2, 3);
 
 obj.sayHello.castomCall(obj, 1, 2, 3);
+
+obj.sayHello.castomApply(obj, [1, 2, 3]);

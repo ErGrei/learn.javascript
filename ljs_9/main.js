@@ -130,3 +130,8 @@ class Rabbit extends Object {
 let rabbit1 = new Rabbit("Кроль");
 
 console.log( rabbit1.hasOwnProperty('name') );
+
+
+
+
+
