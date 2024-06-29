@@ -124,12 +124,20 @@ let rabbit1 = new Rabbit1("Кроль");
 console.log(rabbit1.hasOwnProperty("name"));
 
 class Kettle {
+  #id = null;
   constructor() {
     this.on = false;
     this.power = 0;
     this.volume = 0;
   }
 
+  setId(id) {
+    this.#id = id;
+  }
+
+  getId() { 
+    return this.#id;
+  }
   turnOn() {
     this.on = true;
   }
@@ -184,6 +192,24 @@ class CoffeeMachine extends Kettle {
 const coffeeMachine = new CoffeeMachine();
 coffeeMachine.setPower(100);
 coffeeMachine.setVolume(100);
+coffeeMachine.setId(1);
 // coffeeMachine.turnOn();
 
-console.log(coffeeMachine.makeCoffee());
+console.log(coffeeMachine);
+
+
+/////////////так нельзя!!!!!!!!
+class CoffeeMachine2 extends coffeeMachine {
+  constructor() {
+    super();
+
+    this.coffeeBeans = 0;
+  }
+
+
+}
+
+const coffeeMachine2 = new CoffeeMachine2();
+
+console.log(coffeeMachine2.makeCoffee());
+console.log(coffeeMachine2.coffeeBeans);
