@@ -44,7 +44,7 @@ function foo(a, b, c) {
   console.log(this.name, c);
 }
 
-// foo.castomBind(obj, 1)(2, 3);
+foo.castomBind(obj, 1)(2, 3);
 
 obj.sayHello.castomCall(obj, 1, 2, 3);
 
