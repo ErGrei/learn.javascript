@@ -199,7 +199,7 @@ obj.name = "Bob";
 function foo() {
   console.log(typeof arguments);
 }
-
+  
 // foo(1, 2, 3);
 
 //23
