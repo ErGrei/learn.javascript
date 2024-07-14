@@ -1,10 +1,10 @@
 class Microwave {
   static maximumNumberOfStarts = 1;
-  #maxPower = 90;
+  #interval;
+  _maxPower = 90;
   constructor() {
     this.on = false;
     this.time = 0;
-    this.interval;
     this.power = 0;
   }
 
@@ -21,15 +21,15 @@ class Microwave {
   }
 
   setMaxPower(power) {
-    this.#maxPower = power;
-    return this.#maxPower;
+    this._maxPower = power;
+    return this._maxPower;
   }
 
   getMaxPower() {
-    return this.#maxPower;
+    return this._maxPower;
   }
   setPower(power) {
-    if (power >= 1 && power <= this.#maxPower) {
+    if (power >= 1 && power <= this.setMaxPower()) {
       this.power = power;
       return this.power;
     }
@@ -68,7 +68,7 @@ class Microwave {
     if (this.on === true) {
       this.on = false;
       this.time = 0;
-      clearTimeout(this.interval);
+      clearTimeout(this.#interval);
       console.log("Microwave turned off");
     } else {
       console.log("Microwave already off");
@@ -81,7 +81,7 @@ class Microwave {
       this.time = 0;
     } else {
       console.log(`Time left:  ${seconds}  seconds`);
-      this.interval = setTimeout(() => {
+      this.#interval = setTimeout(() => {
         this.time = --this.time;
         this.timeCountDown(--seconds);
       }, 1000);
@@ -90,7 +90,7 @@ class Microwave {
   pause() {
     if (this.on === true) {
       this.on = false;
-      clearTimeout(this.interval);
+      clearTimeout(this.#interval);
       console.log("Microwave paused");
     } else {
       console.log("Microwave already paused");
