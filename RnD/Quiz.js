@@ -1,224 +1,224 @@
-//1
+// //1
 
-const roo = +[] == +![];
-// console.log(roo);
-false
-true
-undefined
-//2
+// const roo = +[] == +![];
+// // console.log(roo);
+// false
+// true
+// undefined
+// //2
 
-let a = "abc" == new String("abc");
+// let a = "abc" == new String("abc");
 
-let b = "abc" === new String("abc");
+// let b = "abc" === new String("abc");
 
-// console.log(a, b);
+// // console.log(a, b);
 
-//3
+// //3
 
-let obj = {
-  a: 1,
-  b: { n: 2 },
-};
+// let obj = {
+//   a: 1,
+//   b: { n: 2 },
+// };
 
-let obj1 = JSON.parse(JSON.stringify(obj));
+// let obj1 = JSON.parse(JSON.stringify(obj));
 
-obj1.b.n = 3;
+// obj1.b.n = 3;
 
-// console.log(obj);
-// console.log(obj1);
+// // console.log(obj);
+// // console.log(obj1);
 
-//4
+// //4
 
-for (let a = 0; a <= 1; a++) {
-  //   console.log(a);
-}
-// console.log(a);
+// for (let a = 0; a <= 1; a++) {
+//   //   console.log(a);
+// }
+// // console.log(a);
 
-//5
+// //5
 
-let arr = [1, 2, 3];
-arr["3"] = 4;
-arr.last = 5;
+// let arr = [1, 2, 3];
+// arr["3"] = 4;
+// arr.last = 5;
 
-// console.log(arr);
-// console.log(arr.length);
+// // console.log(arr);
+// // console.log(arr.length);
 
-//6
+// //6
 
-class Foo {
-  static baz() {
-    return 1;
-  }
+// class Foo {
+//   static baz() {
+//     return 1;
+//   }
 
-  metod() {
-    return 1;
-  }
-}
+//   metod() {
+//     return 1;
+//   }
+// }
 
-const bar = new Foo();
+// const bar = new Foo();
 
-// console.log(typeof Foo.baz)
-// console.log(typeof bar.baz)
+// // console.log(typeof Foo.baz)
+// // console.log(typeof bar.baz)
 
-// console.log(bar)
-// console.log(Foo)
+// // console.log(bar)
+// // console.log(Foo)
 
-//7
+// //7
 
-function Foo() {
-  if (!new.target) {
-    console.log(1);
-    return false;
-  }
+// function Foo() {
+//   if (!new.target) {
+//     console.log(1);
+//     return false;
+//   }
 
-  console.log(2);
-}
+//   console.log(2);
+// }
 
-// new Foo();
-// Foo();
+// // new Foo();
+// // Foo();
 
-//8
+// //8
 
-const a = [1, 2];
-const b = [1, 2];
+// const a = [1, 2];
+// const b = [1, 2];
 
-// console.log(a * b);
+// // console.log(a * b);
 
-//9
+// //9
 
-const a = [1, 2];
-const b = [3, 4];
+// const a = [1, 2];
+// const b = [3, 4];
 
-// console.log(a + b);
+// // console.log(a + b);
 
-//10
+// //10
 
-// (function () {
-//   console.log(this == 5);
-//   console.log(this === 5);
-// }).call(5)
+// // (function () {
+// //   console.log(this == 5);
+// //   console.log(this === 5);
+// // }).call(5)
 
-//11
+// //11
 
-let a = (2,5 - 1);
+// let a = (2,5 - 1);
 
-// console.log(a);
+// // console.log(a);
 
-//12
+// //12
 
-const s1 = "hello";
+// const s1 = "hello";
 
-const s2 = Array.prototype.reverse(s1);
+// const s2 = Array.prototype.reverse(s1);
 
-// console.log(s1, s2)
+// // console.log(s1, s2)
 
-//13
+// //13
 
-let a = Array.from({ length: 5 }, (v, k) => k);
+// let a = Array.from({ length: 5 }, (v, k) => k);
 
-// console.log(a)
+// // console.log(a)
 
-//14
+// //14
 
-const s = "B" + "a" + +"A" + "a";
+// const s = "B" + "a" + +"A" + "a";
 
-// console.log(s.toLowerCase());
+// // console.log(s.toLowerCase());
 
-//15
+// //15
 
-const arr = [1, 2, 3];
+// const arr = [1, 2, 3];
 
-delete arr[1];
+// delete arr[1];
 
-// console.log(arr.length)
+// // console.log(arr.length)
 
-//16
+// //16
 
-const obj = {
-  bar: foo,
-  a: "hello",
-};
-let a = "6Seniors";
+// const obj = {
+//   bar: foo,
+//   a: "hello",
+// };
+// let a = "6Seniors";
 
-function foo() {
-  console.log(this.a);
-}
+// function foo() {
+//   console.log(this.a);
+// }
 
-// obj.bar();
-// foo();
+// // obj.bar();
+// // foo();
 
-//17
+// //17
 
-let arr = new Array(1, 2);
-let arr1 = new Array(3);
+// let arr = new Array(1, 2);
+// let arr1 = new Array(3);
 
-// console.log(arr[0] + arr1[0]);
+// // console.log(arr[0] + arr1[0]);
 
-//18
+// //18
 
-("use strict");
+// ("use strict");
 
-const obj = {
-  foo() {
-    console.log(this);
-  },
-};
+// const obj = {
+//   foo() {
+//     console.log(this);
+//   },
+// };
 
-// (obj.bar = obj.foo)();
+// // (obj.bar = obj.foo)();
 
-//19
+// //19
 
-// console.log(12 && 21 && null && 0 && undefined && "Hello");
+// // console.log(12 && 21 && null && 0 && undefined && "Hello");
 
-//20
+// //20
 
-let obj = {
-  name: "Tom",
-};
+// let obj = {
+//   name: "Tom",
+// };
 
-// console.log(obj.'name')
+// // console.log(obj.'name')
 
-//21
+// //21
 
-const obj = {
-  _name: "Tom",
-  get name() {
-    return this._name;
-  },
-  set name(value) {
-    this._name = value;
-  },
-};
+// const obj = {
+//   _name: "Tom",
+//   get name() {
+//     return this._name;
+//   },
+//   set name(value) {
+//     this._name = value;
+//   },
+// };
 
-obj.name = "Bob";
+// obj.name = "Bob";
 
-// console.log(obj.name);
+// // console.log(obj.name);
 
-//22
+// //22
 
-function foo() {
-  console.log(typeof arguments);
-}
+// function foo() {
+//   console.log(typeof arguments);
+// }
   
-// foo(1, 2, 3);
+// // foo(1, 2, 3);
 
-//23
+// //23
 
-("use strict");
+// ("use strict");
 
-const obj = {
-  get name() {
-    return "Ivan";
-  },
-};
+// const obj = {
+//   get name() {
+//     return "Ivan";
+//   },
+// };
 
-// obj.name = "Pete";
+// // obj.name = "Pete";
 
-// console.log(obj.name);
+// // console.log(obj.name);
 
-//24
+// //24
 
-const a = [7];
-const b = [7];
+// const a = [7];
+// const b = [7];
 
-// console.log(a * b);
+// // console.log(a * b);
