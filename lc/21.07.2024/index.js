@@ -46,20 +46,13 @@ const matrix2 = [
 ];
 
 function rotateMatrix(matrix) {
-  const newMatrix = [];
-  const result = matrix;
-  for (let i = 0; i < matrix.length; i += 1) {
-    newMatrix[i] = [];
-    for (let j = 0; j < matrix[i].length; j += 1) {
-      newMatrix[i][j] = matrix[i][j];
-    }
-  }
+  let newMatrix = Array.from({length:matrix.length}, () => Array.from({length: matrix[0].length}), () => 0)
   for (let i = 0; i < matrix[0].length; i += 1) {
     for (let j = 0; j < matrix.length; j += 1) {
-      result[i][j] = newMatrix[matrix.length - 1 - j][i];
+      newMatrix[i][j] = matrix[matrix.length - 1 - j][i];
     }
   }
-  return result;
+  return newMatrix;
 }
 console.table(rotateMatrix(matrix2));
 

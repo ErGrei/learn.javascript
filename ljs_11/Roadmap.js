@@ -39,11 +39,15 @@ class castomPromise {
     return new castomPromise((resolve, reject) => {
       if (this.state === this.#RESOLVED) {
         onFulfilled(this.value);
-      } else if (this.state === this.#REJECTED) {
-        onRejected(this.value);
-      } else {
-        this.callbacks.push({ onFulfilled, onRejected });
+        return;
       }
+
+      if (this.state === this.#REJECTED) {
+        onRejected(this.value);
+        return;
+      }
+
+      this.callbacks.push({ onFulfilled, onRejected });
     });
   }
 }
