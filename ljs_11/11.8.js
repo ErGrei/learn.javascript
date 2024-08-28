@@ -107,3 +107,23 @@ function f() {
   wait().then((result) => console.log(result));
 }
 // P.S. Технически задача очень простая, но этот вопрос часто задают разработчики, недавно познакомившиеся с async/await.
+
+// Задача Димы
+async function one (){
+  await timeautPromise(1000, 1 );
+  await timeautPromise(1000, 2);
+  await timeautPromise( 1000, 3);
+}
+
+async function two (){
+  await timeautPromise(1000, 4);
+  await timeautPromise( 1000, 5);
+  await timeautPromise( 1000, 6);
+}
+
+function timeautPromise(ms, i = 0) {
+  return new Promise((resolve) => setTimeout(resolve, ms)).then(() => console.log(i))
+}
+
+one()
+two()
