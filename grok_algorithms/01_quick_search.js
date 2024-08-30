@@ -76,7 +76,7 @@ let towns = [
   }
   console.log('Путь с самой короткой длиной маршрута: ' + path[minCounter] + '(' + minPath + ' км.)');
 }
-search()
+// search()
 
 let arr = (num) => {
   let arr = [];
@@ -114,4 +114,4 @@ function quickSearch(arr, num) {
   return -1;
 }
 
-console.log(quickSearch(arr(10000000), 10000000), step);
+console.log(quickSearch(arr(10000000), 10000), step);
