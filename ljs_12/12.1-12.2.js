@@ -15,6 +15,8 @@ console.log(generator.next().value);
 console.log(generator.next().value);
 console.log(generator.next().value);
 
+//Напишите генератор, который будет возвращать числа Фибоначчи.
+
 function* fibonacci() {
   let [prev, curr] = [0, 1];
   while (true) {
@@ -28,17 +30,39 @@ for (let num of fibonacci()) {
   console.log(num);
 }
 
-function* idMaker() {
-  let index = 1;
+const fib = fibonacci();
+console.log(fib.next().value);
+console.log(fib.next().value);
+console.log(fib.next().value);
+
+function* idGenerator(num = 1) {
+  let index = num;
   while (true) {
     yield index++;
   }
 }
 
-let gen = idMaker();
+let gen = idGenerator();
 
 console.log(gen.next().value);
 console.log(gen.next().value);
 console.log(gen.next().value);
 
 
+//Напишите генератор, который будет возвращать циклические значения по массиву.
+
+function* cyclicGen(array) {
+  let index = 0;
+  while (true) {
+      yield array[index];
+      index = (index + 1) % array.length;
+  }
+}
+
+
+const cyclGen = cyclicGen([1,2,3]);
+console.log(cyclGen.next().value); 
+console.log(cyclGen.next().value); 
+console.log(cyclGen.next().value); 
+console.log(cyclGen.next().value); 
+console.log(cyclGen.next().value); 
