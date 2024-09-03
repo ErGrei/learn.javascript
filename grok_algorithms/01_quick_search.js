@@ -96,7 +96,7 @@ function search(arr, num) {
 }
 
 let step = 0;
-function quickSearch(arr, num) {
+function binarySearch(arr, num) {
   //[10,20,30,40]
   let left = 0;
   let right = arr.length - 1; //3
