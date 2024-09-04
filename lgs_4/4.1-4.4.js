@@ -153,3 +153,4 @@ const objq = {
 
 objq.aboba()
 
+export default null
