@@ -142,3 +142,30 @@ const sum = numbers.reduceCustom((accumulator, number) => {
 });
 
 console.log(sum);
+
+
+// 1) Какие ошибки не обрабатываются try catch
+// 2) Можем ли мы обработать ошибку в catch
+// try {
+//   throw 123;
+// } catch (e) {
+//   throw 456;
+// }
+// console.log("ura");
+// 3) top level await js 
+
+
+const a = async function () {
+  console.log(1);
+  new Promise((res) => res(console.log(2))).then(() => console.log(3));
+
+  await console.log(4);
+
+  new Promise((res) => res(console.log(5))).then(() => console.log(6));
+};
+
+setTimeout(() => console.log(8), 0);
+
+a().then(() => console.log(9));
+
+console.log(10);

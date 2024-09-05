@@ -12,7 +12,7 @@ function* pseudoRandom(seed) {
 let generator = pseudoRandom(1);
 
 console.log(generator.next().value);
-console.log(generator.next().value);
+console.log(generator.next(55).value);
 console.log(generator.next().value);
 
 //Напишите генератор, который будет возвращать числа Фибоначчи.

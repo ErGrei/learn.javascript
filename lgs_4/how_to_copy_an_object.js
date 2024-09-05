@@ -56,3 +56,4 @@ console.log(clone);
 console.log(obj);
 console.log(clone.sayHello());
 console.log(obj.sayHello());
+

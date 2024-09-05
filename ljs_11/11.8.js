@@ -20,8 +20,8 @@ async function loadJson(url) {
   }
 }
 
-loadJson("no-such-user.json") // (3)
-  .catch(alert); // Error: 404
+// loadJson("no-such-user.json") // (3)
+// .catch(alert); // Error: 404
 
 //   Ниже пример из раздела Цепочка промисов, перепишите его, используя async/await вместо .then/catch.
 
@@ -80,7 +80,7 @@ async function demoGithubUser() {
     try {
       let user = await loadJson(`https://api.github.com/users/${name}`);
       alert(`Полное имя: ${user.name}.`);
-      break
+      break;
     } catch (err) {
       if (err instanceof HttpError && err.response.status == 404) {
         alert("Такого пользователя не существует, пожалуйста, повторите ввод.");
@@ -93,7 +93,7 @@ async function demoGithubUser() {
   return user;
 }
 
-demoGithubUser();
+// demoGithubUser();
 
 // Есть «обычная» функция. Как можно внутри неё получить результат выполнения async–функции?
 
@@ -109,21 +109,45 @@ function f() {
 // P.S. Технически задача очень простая, но этот вопрос часто задают разработчики, недавно познакомившиеся с async/await.
 
 // Задача Димы
-async function one (){
-  await timeautPromise(1000, 1 );
+async function one() {
+  await timeautPromise(1000, 1);
   await timeautPromise(1000, 2);
-  await timeautPromise( 1000, 3);
+  await timeautPromise(1000, 3);
 }
 
-async function two (){
+async function two() {
   await timeautPromise(1000, 4);
-  await timeautPromise( 1000, 5);
-  await timeautPromise( 1000, 6);
+  await timeautPromise(1000, 5);
+  await timeautPromise(1000, 6);
 }
 
 function timeautPromise(ms, i = 0) {
-  return new Promise((resolve) => setTimeout(resolve, ms)).then(() => console.log(i))
+  return new Promise((resolve) => setTimeout(resolve, ms)).then(() =>
+    console.log(i)
+  );
 }
 
-one()
-two()
+// one()
+// two()
+
+async function name() {
+  throw new Error(); 
+  console.log(1)
+  // здесь нет await, потому что throw - это оператор, а не функция
+}
+
+name().then((result) => console.log(result));
+
+
+function* generator() {
+  let a = yield 1;
+  console.log(a)
+  yield 2;
+  yield 3;
+}
+
+let gen = generator();
+console.log(gen.next().value);
+console.log(gen.next(44).value);
+
+
