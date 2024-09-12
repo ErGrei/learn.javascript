@@ -73,64 +73,61 @@ function filterByNonEmptyArrays(arr, arrKey) {
   );
 }
 
-
 /**
  * Слияние объектов по ключу
 Условие: Напиши функцию, которая принимает два массива объектов и ключ. Функция должна возвращать массив, содержащий объекты, которые являются результатом слияния объектов из первого и второго массива с одинаковыми значениями по указанному ключу. Если для объекта из первого массива нет совпадения во втором массиве — он не включается в результат.
  */
 
 const arr1 = [
-    { id: 1, name: 'Alice' },
-    { id: 2, name: 'Bob' },
-    { id: 3, name: 'Charlie' }
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Charlie" },
 ];
 
 const arr2 = [
-    { id: 1, age: 25 },
-    { id: 2, age: 30 },
-    { id: 4, age: 40 }
+  { id: 1, age: 25 },
+  { id: 2, age: 30 },
+  { id: 4, age: 40 },
 ];
 
-mergeByKey(arr1, arr2, 'id');
+mergeByKey(arr1, arr2, "id");
 // [
 //     { id: 1, name: 'Alice', age: 25 },
 //     { id: 2, name: 'Bob', age: 30 }
 // ]
 
 function mergeByKey(arr1, arr2, key) {
-    return arr1.map(obj1 => {
-      const obj2 = arr2.find(obj2 => obj2[key] === obj1[key]);
+  return arr1
+    .map((obj1) => {
+      const obj2 = arr2.find((obj2) => obj2[key] === obj1[key]);
       return obj2 ? { ...obj1, ...obj2 } : null;
-    }).filter(obj => obj !== null);
-  }
-  
+    })
+    .filter((obj) => obj !== null);
+}
 
-  /**
+/**
    * Фильтрация объектов с уникальными значениями по ключу
 Условие: Напиши функцию, которая принимает массив объектов и ключ. Функция должна вернуть новый массив, содержащий только те объекты, значения которых по указанному ключу уникальны в массиве.
    */
 
 const arr4 = [
-    { id: 1, name: 'Alice' },
-    { id: 2, name: 'Bob' },
-    { id: 3, name: 'Alice' },
-    { id: 4, name: 'Charlie' }
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Alice" },
+  { id: 4, name: "Charlie" },
 ];
 
-filterUniqueByKey(arr4, 'name');
+filterUniqueByKey(arr4, "name");
 // [
 //     { id: 2, name: 'Bob' },
 //     { id: 4, name: 'Charlie' }
 // ]
 
-
 function filterUniqueByKey(arr, key) {
-    // Шаг 1: Подсчитываем количество каждого значения по ключу
-    const count = arr.reduce((acc, obj) => {
-        acc[obj[key]] = (acc[obj[key]] || 0) + 1;
-        return acc;
-    }, {});
+  const count = arr.reduce((acc, obj) => {
+    acc[obj[key]] = (acc[obj[key]] || 0) + 1;
+    return acc;
+  }, {});
 
-    // Шаг 2: Фильтруем объекты с уникальными значениями по ключу
-    return arr.filter(obj => count[obj[key]] === 1);
+  return arr.filter((obj) => count[obj[key]] === 1);
 }
