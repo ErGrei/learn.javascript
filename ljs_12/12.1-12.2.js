@@ -66,3 +66,5 @@ console.log(cyclGen.next().value);
 console.log(cyclGen.next().value); 
 console.log(cyclGen.next().value); 
 console.log(cyclGen.next().value); 
+
+

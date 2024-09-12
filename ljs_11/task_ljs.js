@@ -46,3 +46,8 @@ delay(3000).then(() => console.log("выполнилось через 3 секу
 //     document.body.append(div);
 //   });
 // }
+
+const btn =document.querySelector('.wrapper')
+btn.eddEventListener('click',()=>{
+  
+})
