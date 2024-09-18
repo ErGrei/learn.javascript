@@ -126,7 +126,7 @@ function task6() {
   setTimeout(() => {
     console.log("5");
   }, 0);
-
+ 
   console.log("6");
 }
 
@@ -166,7 +166,7 @@ function task7() {
 //8
 
 function task8() {
-  console.log("1");
+ console.log("1");
 
   async function asyncFunc1() {
     console.log("2");
@@ -235,13 +235,11 @@ function task9() {
 
 function task10() {
     console.log('1');
-
 async function asyncFunc1() {
   console.log('2');
   await asyncFunc2();
   console.log('3');
 }
-
 async function asyncFunc2() {
   console.log('4');
   await new Promise(resolve => {
@@ -250,13 +248,10 @@ async function asyncFunc2() {
   });
   console.log('6');
 }
-
 setTimeout(() => {
   console.log('7');
-}, 0);
-
+}, 100);
 asyncFunc1();
-
 new Promise((resolve) => {
   console.log('8');
   resolve();
@@ -265,13 +260,10 @@ new Promise((resolve) => {
 }).then(() => {
   console.log('10');
 });
-
 setTimeout(() => {
   console.log('11');
 }, 0);
-
 console.log('12');
-
 };
 
-// task10();
+task10();
