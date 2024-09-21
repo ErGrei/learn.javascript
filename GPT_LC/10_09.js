@@ -49,7 +49,8 @@ filterByKey(arr, "age", 25);
 // ]
 
 function filterByKey(arr, key, value) {
-  const res = arr.filter((item) => item[key] === value);
+  const res = arr.filter((item) => {
+    return item[key] === value});
   return res;
 }
 
