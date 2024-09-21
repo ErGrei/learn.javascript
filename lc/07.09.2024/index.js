@@ -1,155 +1,101 @@
 /**
- * Задача 1: Удаление свойств объекта
-Напишите функцию removeProperties, которая принимает объект и массив строк. Функция должна удалить все свойства объекта, ключи которых содержатся в массиве.
+ * Фильтрация массива объектов по значению ключа
+Условие: Напиши функцию, которая принимает массив объектов и два параметра: ключ и значение. Функция должна возвращать новый массив, содержащий только те объекты, у которых значение по указанному ключу совпадает с переданным значением.
  */
 
-const obj = {
-  name: "John",
-  age: 25,
-  city: "New York",
-  occupation: "Developer",
-};
-
-const keysToRemove = ["age", "city"];
-
-function removeProperties(obj, keysToRemove) {
-  for (let key of keysToRemove) {
-    delete obj[key];
-  }
-}
-
-removeProperties(obj, keysToRemove);
-
-console.log(obj);
-// Ожидаемый результат: { name: "John", occupation: "Developer" }
-
-/**
-   * Задача 2: Объединение объектов с приоритетом значений
-Напишите функцию mergeObjects, которая принимает два объекта. Необходимо объединить их так, чтобы при наличии одинаковых ключей приоритет имели значения из второго объекта.
-   */
-
-const obj1 = { name: "John", age: 30 };
-const obj2 = { age: 25, city: "New York" };
-
-function mergeObjects(obj1, obj2) {
-  return { ...obj1, ...obj2 };
-}
-
-const result = mergeObjects(obj1, obj2);
-
-console.log(result);
-// Ожидаемый результат: { name: "John", age: 25, city: "New York" }
-
-/**
- * Задача 3: Подсчет повторяющихся значений
-Напишите функцию countOccurrences, которая принимает массив объектов и строку. Функция должна вернуть количество объектов, у которых значение свойства с именем, указанным в строке, встречается более одного раза.
- */
-
-const people = [
-  { name: "John", age: 30 },
-  { name: "Jane", age: 25 },
-  { name: "John", age: 22 },
-  { name: "Mike", age: 30 },
-  { name: "Jane", age: 40 },
+const arr = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 25 },
 ];
 
-function countOccurrences(arr, prop) {
-const result = arr.reduce((acc, obj) => {
-    if (obj[prop] in acc) {
-      acc[obj[prop]]++;
-    } else {
-      acc[obj[prop]] = 1;
-    }
+filterByKey(arr, "age", 25);
+// [
+//     { name: 'Alice', age: 25 },
+//     { name: 'Charlie', age: 25 }
+// ]
+
+function filterByKey(arr, key, value) {
+  const res = arr.filter((item) => {
+    return item[key] === value});
+  return res;
+}
+
+/**
+   * Проверка, содержат ли все объекты массивы значений
+Условие: Напиши функцию, которая принимает массив объектов и массив ключей. Функция должна возвращать новый массив, содержащий только те объекты, у которых все ключи из массива ключей содержат непустые массивы в качестве значений.
+   */
+
+const arr3 = [
+  { name: "Alice", hobbies: ["reading"], age: [] },
+  { name: "Bob", hobbies: ["sports"], age: [30] },
+  { name: "Charlie", hobbies: [], age: [25] },
+];
+
+filterByNonEmptyArrays(arr3, ["hobbies", "age"]);
+// [{ name: 'Bob', hobbies: ['sports'], age: [30] }]
+
+function filterByNonEmptyArrays(arr, arrKey) {
+  return arr.filter((obj) =>
+    arrKey.every((key) => Array.isArray(obj[key]) && obj[key].length !== 0)
+  );
+}
+
+/**
+ * Слияние объектов по ключу
+Условие: Напиши функцию, которая принимает два массива объектов и ключ. Функция должна возвращать массив, содержащий объекты, которые являются результатом слияния объектов из первого и второго массива с одинаковыми значениями по указанному ключу. Если для объекта из первого массива нет совпадения во втором массиве — он не включается в результат.
+ */
+
+const arr1 = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Charlie" },
+];
+
+const arr2 = [
+  { id: 1, age: 25 },
+  { id: 2, age: 30 },
+  { id: 4, age: 40 },
+];
+
+mergeByKey(arr1, arr2, "id");
+// [
+//     { id: 1, name: 'Alice', age: 25 },
+//     { id: 2, name: 'Bob', age: 30 }
+// ]
+
+function mergeByKey(arr1, arr2, key) {
+  return arr1
+    .map((obj1) => {
+      const obj2 = arr2.find((obj2) => obj2[key] === obj1[key]);
+      return obj2 ? { ...obj1, ...obj2 } : null;
+    })
+    .filter((obj) => obj !== null);
+}
+
+/**
+   * Фильтрация объектов с уникальными значениями по ключу
+Условие: Напиши функцию, которая принимает массив объектов и ключ. Функция должна вернуть новый массив, содержащий только те объекты, значения которых по указанному ключу уникальны в массиве.
+   */
+
+const arr4 = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Alice" },
+  { id: 4, name: "Charlie" },
+];
+
+filterUniqueByKey(arr4, "name");
+// [
+//     { id: 2, name: 'Bob' },
+//     { id: 4, name: 'Charlie' }
+// ]
+
+function filterUniqueByKey(arr, key) {
+  const count = arr.reduce((acc, obj) => {
+    acc[obj[key]] = (acc[obj[key]] || 0) + 1;
     return acc;
   }, {});
 
-
-
-  return result;
+  return arr.filter((obj) => count[obj[key]] === 1);
 }
-
-
-const people2 = [
-    { name: "John", age: 30 },
-    { name: "Jane", age: 25 },
-    { name: "John", age: 22 },
-    { name: "Mike", age: 30 },
-    { name: "Jane", age: 40 }
-  ];
-const result2 = countOccurrences(people2, "name");
-console.log(result2);
-// Ожидаемый результат: { John: 2, Jane: 2, Mike: 1 }
-
-
-/**
- * Задача 4: Сравнение объектов по ключам
-Напишите функцию compareObjects, которая принимает два объекта и массив ключей. Функция должна вернуть true, если значения объектов по всем указанным ключам совпадают, иначе false.
- */
-
-const obj3 = { name: "John", age: 30, city: "New York" };
-const obj4 = { name: "John", age: 30, city: "Los Angeles" };
-const keys = ["name", "age"];
-
-function compareObjects(obj1, obj2, keys) {
-  return keys.every((key) => obj1[key] === obj2[key]);
-}
-
-const result3 = compareObjects(obj3, obj4, keys);
-
-console.log(result3);
-// Ожидаемый результат: true
-
-
-/**
- * Задача 5: Преобразование объекта в массив
-Напишите функцию objectToArray, которая принимает объект, в котором значения являются объектами. Необходимо преобразовать его в массив объектов, где каждый объект будет иметь ключи "key" и "value", где "value" — это изначальный объект.
- */
-
-const data = {
-    a: { id: 1, name: "John" },
-    b: { id: 2, name: "Jane" },
-    c: { id: 3, name: "Mike" }
-  };
-
-  function objectToArray(obj) {
-    return Object.keys(obj).map((key) => ({
-      key,
-      value: obj[key]
-    }));
-  }
-  
-  const result5 = objectToArray(data);
-  
-  console.log(result5);
-  // Ожидаемый результат:
-  // [
-  //   { key: "a", value: { id: 1, name: "John" } },
-  //   { key: "b", value: { id: 2, name: "Jane" } },
-  //   { key: "c", value: { id: 3, name: "Mike" } }
-  // ]
-  
-
-  /**Задача 6: Глубокое клонирование объекта
-   * Напишите функцию deepClone, которая принимает объект и возвращает его глубокую копию. Для решения задачи не используйте библиотеку lodash или аналогичные утилиты.
-   */
-
-  const obj8 = {
-    name: "John",
-    age: 30,
-    address: {
-      city: "New York",
-      street: "5th Avenue"
-    }
-  };
-
-  function deepClone(obj) {
-    return JSON.parse(JSON.stringify(obj));
-  }
-  
-  const clone = deepClone(obj8);
-  
-  clone.address.city = "Los Angeles";
-  
-  console.log(obj.address.city); // Ожидаемый результат: "New York"
-  console.log(clone.address.city); // Ожидаемый результат: "Los Angeles"
-  

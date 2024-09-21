@@ -108,10 +108,10 @@ const IndexedArray = new Proxy(Array, {
   });
   
   const users = new IndexedArray([
-    { id: 5, name: 'Ivan', age: 25 },
-    { id: 7, name: 'Aboba', age: 22 },
-    { id: 10, name: 'Maksim', age: 23 },
-    { id: 22, name: 'Anatoliy', age: 24 }
+    { id: 5, name: 'Ivan', age: 36 },
+    { id: 7, name: 'Aboba', age: 42 },
+    { id: 10, name: 'Maksim', age: 13 },
+    { id: 22, name: 'Anatoliy', age: 84 }
   ])
 
-  console.log(users.indexId(5));
+  console.log(users.indexId(22));
