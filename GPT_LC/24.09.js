@@ -87,4 +87,33 @@ const getTotalOrderAmounts = (orders) => {
   });
 };
 
-console.log(getTotalOrderAmounts(orders));
+// console.log(getTotalOrderAmounts(orders));
+
+// У тебя есть массив сотрудников, у каждого из которых есть имя и заработная плата:
+
+const employees = [
+  { name: "John", salary: 3000 },
+  { name: "Jane", salary: 4000 },
+  { name: "Mike", salary: 2500 },
+  { name: "Alice", salary: 5000 },
+  { name: "Bob", salary: 3200 },
+];
+
+// Твоя задача — написать функцию getTopEarners(employees, n), которая принимает массив сотрудников и число n, и возвращает массив с именами n сотрудников с самыми высокими зарплатами.
+
+["Alice", "Jane", "Bob"];
+
+const getTopEarners = (employees, n) => {
+  const sortObj = [...employees].sort((a, b) => {
+    return b.salary - a.salary;
+  });
+
+  const topEarners = [];
+
+  for (let i = 0; i < n; i++) {
+    topEarners.push(sortObj[i].name);
+  }
+  return topEarners;
+};
+
+console.log(getTopEarners(employees, 3));
